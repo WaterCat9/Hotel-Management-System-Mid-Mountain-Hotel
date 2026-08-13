@@ -1,0 +1,39 @@
+/* ========== 网格系统 ========== */
+
+/* 行：包裹所有列 */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 列：自动占满剩余空间 */
+.col {
+    flex: 1;
+}
+
+/* 固定宽度列 */
+.col-2 { width: 50%; }
+.col-3 { width: 33.333%; }
+.col-4 { width: 25%; }
+
+/* 间距工具 */
+.gap-10 { gap: 10px; }
+.gap-20 { gap: 20px; }
+.gap-30 { gap: 30px; }
+
+/* 对齐工具 */
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+
+.align-center { align-items: center; }
+.align-start { align-items: flex-start; }
+.align-end { align-items: flex-end; }
+
+/* 响应式：手机上一列占满 */
+@media (max-width: 768px) {
+    .col-2, .col-3, .col-4 {
+        width: 100%;
+    }
+}

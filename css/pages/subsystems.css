@@ -1,0 +1,206 @@
+/* ===================================================
+   Subsystems 页面样式 — 与首页统一的高端风格
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: #FBF9F4;
+    color: #2c2c2c;
+    padding-top: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ========== 页面头部 ========== */
+.subsystems-section {
+    padding: 80px 20px 60px;
+    min-height: calc(100vh - 80px - 200px);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.page-divider {
+    width: 80px;
+    height: 2px;
+    background: #C9A84C;
+    margin: 0 auto 25px;
+}
+
+.page-subtitle-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+
+/* ========== 卡片网格 ========== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #FFFFFF;
+    border: 1px solid #E5E0D5;
+    padding: 40px 25px 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #C9A84C;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: #888;
+    line-height: 1.6;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: #C9A84C;
+    font-size: 13px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.card:hover .card-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ========== Footer (保持与首页一致) ========== */
+footer {
+    background-color: #1a1a1a;
+    color: #999;
+    padding: 2.5rem 1.25rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-info h3 {
+    color: #c5a059;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+.footer-contact p {
+    margin-bottom: 5px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+}
+
+.footer-social a {
+    color: #999;
+    text-decoration: none;
+    margin: 0 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #c5a059;
+}
+
+
+/* ========== 响应式 ========== */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .page-title {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    .page-title {
+        font-size: 32px;
+    }
+    .subsystems-section {
+        padding: 60px 20px 40px;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

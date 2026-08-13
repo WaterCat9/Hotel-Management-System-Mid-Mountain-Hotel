@@ -1,0 +1,97 @@
+.login-section {
+    padding: 5rem 1.25rem;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.login-card {
+    max-width: 25rem;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 1.5625rem;
+    color: #333;
+    font-size: 1.75rem;
+}
+
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.3125rem;
+    color: #666;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.3125rem;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #c5a059;
+    outline: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #c5a059;
+    color: white;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.9375rem;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #a88947;
+}
+
+.login-links {
+    text-align: center;
+}
+
+.login-links a {
+    color: #c5a059;
+    text-decoration: none;
+    margin: 0 0.625rem;
+    font-size: 0.875rem;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 1.5625rem;
+    }
+
+    .login-card h2 {
+        font-size: 1.5rem;
+    }
+}
+

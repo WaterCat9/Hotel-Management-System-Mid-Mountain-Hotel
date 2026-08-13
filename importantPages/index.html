@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mid-Mountain Hotel | Luxury & Comfort</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<script src="../js/time.js"></script>
+<script src="../js/welcome.js"></script>
+<script src="../js/nav.js"></script>
+
+<!-- ==================== 导航栏（不变） ==================== -->
+<nav class="navbar" id="navbar">
+    <img src="../images/logo.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="../importantPages/index.html">Home</a></li>
+        <li><a href="../subsystem2/main.html">Finance</a></li>
+        <li><a href="../pages/About.html">About</a></li>
+        <li><a href="../pages/Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='../importantPages/subsystems.html'">Subsystems</button>
+</nav>
+
+<!-- ==================== 1. Hero 开屏区 ==================== -->
+<section class="hero">
+    <img class="hero-bg" src="../images/background.jpg" alt="Mid-Mountain Hotel">
+    <div class="hero-overlay">
+        <div class="hero-subtitle">Welcome to Mid-Mountain</div>
+        <h1 class="hero-title">Experience Luxury<br>&amp; Comfort</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-description">Where timeless elegance meets modern hospitality</p>
+        <div class="hero-buttons">
+            <a href="../pages/login.html" class="hero-btn hero-btn-primary">Sign In</a>
+            <a href="subsystems.html" class="hero-btn">Explore Subsystems</a>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <span>Discover</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ==================== 2. Welcome 介绍区 ==================== -->
+<section class="welcome-section">
+    <div class="section-header">
+        <div class="section-subtitle">A Complete Experience</div>
+        <h2 class="section-title">Your All-in-One Hotel<br>Management Platform</h2>
+        <div class="section-divider"></div>
+        <p class="section-description">
+            From fine dining to room reservations, from entertainment bookings to financial tracking
+            — everything you need, seamlessly integrated into one elegant system.
+        </p>
+    </div>
+</section>
+
+<!-- ==================== 3. 功能卡片区 — 子系统入口 ==================== -->
+<section class="features-section">
+    <div class="features-grid">
+        <!-- 餐饮管理 -->
+        <div class="feature-card" onclick="location.href='../subsystem1/html/Mid-mountain hotel.html'">
+            <div class="feature-icon">🍽️</div>
+            <h3>Dining</h3>
+            <p>Table reservations, online ordering, and signature restaurant experiences</p>
+            <span class="feature-arrow">Explore &rarr;</span>
+        </div>
+        <!-- 财务管理 -->
+        <div class="feature-card" onclick="location.href='../subsystem2/main.html'">
+            <div class="feature-icon">💰</div>
+            <h3>Finance</h3>
+            <p>Income tracking, expense management, and financial dashboards</p>
+            <span class="feature-arrow">Explore &rarr;</span>
+        </div>
+        <!-- 客房管理 -->
+        <div class="feature-card" onclick="location.href='../subsystem3/work_room/Business_rooms.html'">
+            <div class="feature-icon">🛏️</div>
+            <h3>Rooms</h3>
+            <p>Room booking, check-in/out, housekeeping, and status management</p>
+            <span class="feature-arrow">Explore &rarr;</span>
+        </div>
+        <!-- 娱乐管理 -->
+        <div class="feature-card" onclick="location.href='../subsystem4/main.html'">
+            <div class="feature-icon">🎮</div>
+            <h3>Entertainment</h3>
+            <p>KTV, SPA, gym, swimming pool, and cards room reservations</p>
+            <span class="feature-arrow">Explore &rarr;</span>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 4. 展示区 — 图片+文字交替 ==================== -->
+<section class="showcase-section">
+    <!-- 板块 1：餐饮 — 图左文右 -->
+    <div class="showcase">
+        <div class="showcase-image">
+            <img src="../images/photo4.webp" alt="Fine Dining">
+        </div>
+        <div class="showcase-info">
+            <span class="showcase-tag">Culinary Excellence</span>
+            <h3>Exceptional Dining</h3>
+            <div class="gold-line"></div>
+            <p>
+                Indulge in a world of gastronomic excellence. Four signature restaurants
+                — from underwater fine dining at Ossiano to the forest-to-table charm of
+                The Forest. Every dish is a masterpiece crafted by our award-winning chefs.
+            </p>
+            <button class="showcase-btn" onclick="location.href='dining-detail.html'">Discover Dining</button>
+        </div>
+    </div>
+
+    <!-- 板块 2：客房 — 图右文左（reverse） -->
+    <div class="showcase reverse">
+        <div class="showcase-image">
+            <img src="../images/photo2.webp" alt="Luxury Rooms">
+        </div>
+        <div class="showcase-info">
+            <span class="showcase-tag">Rest &amp; Rejuvenate</span>
+            <h3>Luxury Accommodations</h3>
+            <div class="gold-line"></div>
+            <p>
+                From elegant single rooms to spacious quad suites, every room is designed
+                with your comfort in mind. Premium bedding, panoramic mountain views, and
+                24-hour attentive service await your arrival.
+            </p>
+            <button class="showcase-btn" onclick="location.href='rooms-detail.html'">Explore Rooms</button>
+        </div>
+    </div>
+
+    <!-- 板块 3：娱乐 — 图左文右 -->
+    <div class="showcase">
+        <div class="showcase-image">
+            <img src="../images/photo3.webp" alt="Entertainment & Facilities">
+        </div>
+        <div class="showcase-info">
+            <span class="showcase-tag">Leisure &amp; Wellness</span>
+            <h3>World-Class Facilities</h3>
+            <div class="gold-line"></div>
+            <p>
+                Unwind at our luxurious SPA, stay active in the state-of-the-art gym,
+                sing your heart out at KTV, or take a refreshing dip in the swimming pool.
+                Every moment here is an experience.
+            </p>
+            <button class="showcase-btn" onclick="location.href='entertainment-detail.html'">View Facilities</button>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 5. 数据条 ==================== -->
+<div class="stats-banner">
+    <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Subsystems</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Service Modules</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Signature Restaurants</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Guest Services</div>
+    </div>
+</div>
+
+<!-- ==================== 页脚（不变） ==================== -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-info">
+            <h3>Mid-Mountain Hotel</h3>
+            <p>© 2026 All rights reserved</p>
+        </div>
+        <div class="footer-contact">
+            <p>WeiBo | Bilibili | Douyin</p>
+            <p>Email: info@hotel.com</p>
+            <p>Phone: +86 123 4567 8900</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIKKI | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/TIKKI Restaurant.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="../image/logo.png" alt="Mid-Mountain" class="nav-logo" onclick="window.location.href='Mid-mountain hotel.html'">
+    <a href="Mid-mountain hotel.html" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="hero">
+    <img src="../image/TIKKI-Restaurant.jpg" alt="TIKKI Restaurant">
+    <div class="hero-overlay">
+        <div class="hero-tag">Global Fusion</div>
+        <h1 class="hero-title">TIKKI</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-subtitle">A journey across continents, on a single plate</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <!-- BBQ -->
+    <div class="dish-row">
+        <div class="dish-image-wrap">
+            <img src="../TIKKI-ordering/BBQ.jpg" alt="BBQ">
+        </div>
+        <div class="dish-text">
+            <span class="tag">Smoke &amp; Fire</span>
+            <h2>BBQ</h2>
+            <div class="line"></div>
+            <p>Slow-smoked over aromatic applewood for eighteen hours, our signature barbecue brings together the soul of American smokehouse tradition with the refinement of fine dining. Each cut is hand-rubbed with our secret spice blend and glazed to a mirror shine.</p>
+            <div class="price">$98</div>
+            <button class="order-btn" onclick="addOrder('BBQ', '98')">Add to Order</button>
+        </div>
+    </div>
+
+    <!-- Taco -->
+    <div class="dish-row">
+        <div class="dish-text" style="order: 2;">
+            <span class="tag">Mexican Soul</span>
+            <h2>Taco</h2>
+            <div class="line"></div>
+            <p>Hand-pressed blue corn tortillas cradle slow-braised Wagyu beef cheek, finished with salsa verde, queso fresco, and micro cilantro. A vibrant homage to the streets of Mexico City, elevated to the heights of fine gastronomy.</p>
+            <div class="price">$68</div>
+            <button class="order-btn" onclick="addOrder('Taco', '68')">Add to Order</button>
+        </div>
+        <div class="dish-image-wrap" style="order: 1;">
+            <img src="../TIKKI-ordering/Taco.jpg" alt="Taco">
+        </div>
+    </div>
+
+    <!-- Giant River Prawn -->
+    <div class="dish-row">
+        <div class="dish-image-wrap">
+            <img src="../TIKKI-ordering/Giant River Prawn.jpg" alt="Giant River Prawn">
+        </div>
+        <div class="dish-text">
+            <span class="tag">Aquatic Treasure</span>
+            <h2>Giant River Prawn</h2>
+            <div class="line"></div>
+            <p>Sourced from the pristine waters of Southeast Asia, these magnificent prawns are charcoal-grilled and anointed with lemongrass-infused butter. The delicate sweetness of the flesh is complemented by a citrus-herb emulsion.</p>
+            <div class="price">$158</div>
+            <button class="order-btn" onclick="addOrder('Giant River Prawn', '158')">Add to Order</button>
+        </div>
+    </div>
+
+    <!-- Cloud and Color -->
+    <div class="dish-row">
+        <div class="dish-text" style="order: 2;">
+            <span class="tag">Art on a Plate</span>
+            <h2>Cloud and Color</h2>
+            <div class="line"></div>
+            <p>Our most imaginative creation — an ethereal composition of cotton-soft textures and vibrant botanical hues. A dish that defies description, it embodies the spirit of TIKKI: boundary-pushing, visually breathtaking, and utterly delicious.</p>
+            <div class="price">$128</div>
+            <button class="order-btn" onclick="addOrder('Cloud and Color', '128')">Add to Order</button>
+        </div>
+        <div class="dish-image-wrap" style="order: 1;">
+            <img src="../TIKKI-ordering/Cloude and Color.jpg" alt="Cloud and Color">
+        </div>
+    </div>
+
+    <!-- Chef Section -->
+    <div class="chef-section">
+        <div class="chef-image-wrap">
+            <img src="../TIKKI-ordering/Floaral Carrot Medley.jpg" alt="Chef's Special">
+        </div>
+        <div class="chef-text">
+            <span class="tag">Chef's Masterpiece</span>
+            <h2>Floral Carrot Medley</h2>
+            <div class="line"></div>
+            <p>A signature creation that showcases the finest seasonal heirloom carrots, sourced from artisanal farms. Each varietal is prepared using a distinct technique — roasted, glazed, puréed, and crisped — then arranged as a botanical work of art. This dish celebrates the beauty of nature's simplest ingredients transformed through culinary innovation.</p>
+        </div>
+    </div>
+
+    <div class="info-card" style="margin-top: 80px;">
+        <h3>TIKKI</h3>
+        <p>A vibrant celebration of global flavors — where culinary traditions from every corner of the world converge in perfect harmony.</p>
+        <button class="back-btn" onclick="window.location.href='Mid-mountain hotel.html'">Return to Home</button>
+    </div>
+</section>
+
+<footer>
+    <p>Mid-Mountain Hotel &copy; 2026 &mdash; TIKKI Restaurant</p>
+</footer>
+
+<script src="../js/TIKKI Restaurant.js"></script>
+</body>
+</html>

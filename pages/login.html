@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout/sticky-footer.css">
+</head>
+<body>
+
+<!-- ==================== 导航栏 ==================== -->
+<nav class="navbar" id="navbar">
+    <img src="../images/logo.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="../importantPages/index.html">Home</a></li>
+        <li><a href="../subsystem2/main.html">Finance</a></li>
+        <li><a href="../pages/About.html">About</a></li>
+        <li><a href="../pages/Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='../importantPages/subsystems.html'">Subsystems</button>
+</nav>
+
+<!-- ==================== 登录区域 ==================== -->
+<section id="login" class="login-section">
+    <div class="container">
+        <div class="login-card">
+            <h2>Member Login</h2>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button class="btn btn-primary btn-block" onclick="doLogin()">Login</button>
+            <div class="login-links">
+                <a href="../pages/Forgotpassword.html">Forgot password?</a>
+                <a href="../pages/register.html">Create Account</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 页脚 ==================== -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-info">
+            <h3>Mid-Mountain Hotel</h3>
+            <p>© 2026 All rights reserved</p>
+        </div>
+        <div class="footer-contact">
+            <p>WeiBo | Bilibili | Douyin</p>
+            <p>Email: info@hotel.com</p>
+            <p>Phone: +86 123 4567 8900</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../js/time.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+    // 简单登录验证 — 输入不为空即可
+    function doLogin() {
+        var username = document.getElementById('username').value.trim();
+        var password = document.getElementById('password').value.trim();
+
+        if (username === '') {
+            alert('Please enter your username.');
+            return;
+        }
+        if (password === '') {
+            alert('Please enter your password.');
+            return;
+        }
+
+        alert('Welcome back, ' + username + '!');
+        window.location.href = '../importantPages/subsystems.html';
+    }
+</script>
+
+</body>
+</html>

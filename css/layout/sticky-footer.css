@@ -1,0 +1,17 @@
+/* 让整个页面至少占满视口高度 */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 主要内容区域自动撑开，把 footer 推到底部 */
+.login-section {
+    flex: 1;
+}

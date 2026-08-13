@@ -1,0 +1,46 @@
+/* 卡片组件 */
+.card {
+    width: 20rem;
+    background-color: var(--white);
+    padding: 2.2rem 1.6rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-icon {
+    font-size: 3.44rem;
+    margin-bottom: 1.25rem;
+}
+
+.card h3 {
+    color: var(--primary-color);
+    font-size: 1.375rem;
+    margin-bottom: 0.9375rem;
+}
+
+.card p {
+    color: var(--gray);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.card-link {
+    display: inline-block;
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.card:hover .card-link {
+    transform: translateX(5px);
+}

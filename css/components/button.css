@@ -1,0 +1,40 @@
+/* button.css - 按钮组件样式 */
+
+
+/*长方形按钮*/
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #c5a059;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #a88947;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    width: 100%;
+}

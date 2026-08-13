@@ -1,0 +1,28 @@
+/* ========== 容器组件 ========== */
+
+/* 普通容器：限制最大宽度，居中 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 小容器（用于登录卡片等） */
+.container-sm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 窄容器（用于表单） */
+.container-narrow {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 全宽容器（没有最大宽度限制） */
+.container-fluid {
+    width: 100%;
+    padding: 0 20px;
+}

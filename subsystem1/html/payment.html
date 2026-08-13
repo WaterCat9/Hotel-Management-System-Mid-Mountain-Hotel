@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settle Bill | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/payment.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="../image/logo.png" alt="Mid-Mountain" class="nav-logo" onclick="window.location.href='Mid-mountain hotel.html'">
+    <a href="Mid-mountain hotel.html" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="container">
+    <div class="page-header">
+        <div class="page-tag">Checkout</div>
+        <h1 class="page-title">Settle Your Bill</h1>
+        <div class="gold-line"></div>
+    </div>
+
+    <div class="card">
+        <h3>Payment Details</h3>
+
+        <div class="form-group">
+            <label>Order Summary</label>
+            <div id="paymentOrderList">
+                <p style="color: rgba(232,213,160,0.35); text-align: center; padding: 15px;">No orders yet</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Subtotal: <span id="subtotalAmount" style="color:#C9A84C; font-weight:600;">$0.00</span></label>
+        </div>
+
+        <div class="form-group">
+            <label>Discount</label>
+            <select id="discountSelect" onchange="calculateTotal()">
+                <option value="0">No Discount</option>
+                <option value="10">10% Off</option>
+                <option value="15">15% Off</option>
+                <option value="20">$20 Off</option>
+            </select>
+        </div>
+
+        <div class="total-row grand-total">
+            <span>Total Amount</span>
+            <span id="totalAmount">$0.00</span>
+        </div>
+
+        <div class="form-group" style="margin-top: 25px;">
+            <label>Payment Method</label>
+            <select id="paymentMethod">
+                <option value="wechat">WeChat Pay</option>
+                <option value="alipay">Alipay</option>
+                <option value="bank">Bank Card</option>
+                <option value="cash">Cash</option>
+            </select>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-success" onclick="processPayment()">Pay Now</button>
+            <button class="btn" onclick="printReceipt()">Print Receipt</button>
+        </div>
+        <div class="btn-row" style="margin-top: 12px;">
+            <button class="btn" onclick="window.location.href='Mid-mountain hotel.html'">Return to Home</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Mid-Mountain Hotel &copy; 2026 &mdash; All Rights Reserved</p>
+    </footer>
+</div>
+
+<script src="../js/payment.js"></script>
+</body>
+</html>

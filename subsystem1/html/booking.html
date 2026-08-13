@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve a Table | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/booking.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="../image/logo.png" alt="Mid-Mountain" class="nav-logo" onclick="window.location.href='Mid-mountain hotel.html'">
+    <a href="Mid-mountain hotel.html" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="video-container">
+    <video autoplay muted loop playsinline>
+        <source src="../video/ParisLoop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-text">
+        <div class="hero-tag">Reservations</div>
+        <h1 class="hero-title">Book Your Table</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h3>Reserve a Table</h3>
+
+        <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <select>
+                <option value="">Please select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Prefer not to say</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Enter your phone number" maxlength="11" oninput="checkPhoneNumber(this)">
+        </div>
+
+        <div class="form-group">
+            <label>Select Restaurant</label>
+            <select>
+                <option>Pizza Church</option>
+                <option>The Forest</option>
+                <option>Ossiano Underwater Restaurant</option>
+                <option>TIKKI Restaurant</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Party Size</label>
+            <select>
+                <option>1 Person</option>
+                <option>2 People</option>
+                <option>3 to 4 People</option>
+                <option>5 to 8 People</option>
+                <option>More than 10 People</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Date &amp; Time</label>
+            <input type="datetime-local">
+        </div>
+
+        <div class="form-group">
+            <label>Special Requests</label>
+            <textarea rows="3" placeholder="Dietary requirements, special occasions, seating preferences..."></textarea>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="bookTable()">Confirm Reservation</button>
+            <button class="btn" onclick="window.location.href='Mid-mountain hotel.html'">Back to Home</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Mid-Mountain Hotel &copy; 2026 &mdash; All Rights Reserved</p>
+    </footer>
+</div>
+
+<script src="../js/booking.js"></script>
+</body>
+</html>

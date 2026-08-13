@@ -1,0 +1,193 @@
+/* ===================================================
+   About 页面样式 — 与首页统一的高端风格
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: #FBF9F4;
+    color: #2c2c2c;
+    padding-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ========== 页面头部 ========== */
+.about-hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: #FBF9F4;
+}
+
+.about-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 20px;
+}
+
+.about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.about-divider {
+    width: 80px;
+    height: 2px;
+    background: #C9A84C;
+    margin: 0 auto 30px;
+}
+
+
+/* ========== 内容区 ========== */
+.about-content {
+    padding: 40px 20px 80px;
+    background: #FBF9F4;
+    flex: 1;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: #555;
+    line-height: 2;
+    margin-bottom: 28px;
+    text-align: justify;
+    letter-spacing: 0.5px;
+}
+
+.about-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: #C9A84C;
+    float: left;
+    line-height: 0.8;
+    padding-right: 10px;
+    padding-top: 6px;
+}
+
+
+/* ========== 价值观卡片 ========== */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+
+.value-card {
+    text-align: center;
+    padding: 35px 20px;
+    background: #FFFFFF;
+    border: 1px solid #E5E0D5;
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    border-color: #C9A84C;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.value-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.value-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.value-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.6;
+}
+
+
+/* ========== Footer ========== */
+footer {
+    background-color: #1a1a1a;
+    color: #999;
+    padding: 2.5rem 1.25rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-info h3 {
+    color: #c5a059;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+.footer-contact p {
+    margin-bottom: 5px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+}
+
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 36px;
+    }
+    .about-text p {
+        font-size: 16px;
+        text-align: left;
+    }
+    .values-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    .about-hero {
+        padding: 60px 20px 40px;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

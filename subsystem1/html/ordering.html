@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Restaurants | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/ordering.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="../image/logo.png" alt="Mid-Mountain" class="nav-logo" onclick="window.location.href='Mid-mountain hotel.html'">
+    <a href="Mid-mountain hotel.html" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="image-container">
+    <div class="carousel-track" id="imagetrack">
+        <div class="carousel-slide">
+            <img src="../Pizza Church-orders/Pizza Church.jpg" alt="Pizza Church">
+            <div class="restaurant-info show">
+                <div class="tag">Artisanal Pizzeria</div>
+                <h2>Pizza Church</h2>
+                <div class="gold-line"></div>
+                <button class="explore-btn" onclick="window.location.href='Pizza Church.html'">Discover</button>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../image/Forest-Restaurant.jpg" alt="The Forest">
+            <div class="restaurant-info">
+                <div class="tag">Garden to Table</div>
+                <h2>The Forest</h2>
+                <div class="gold-line"></div>
+                <button class="explore-btn" onclick="window.location.href='Forest-Restaurant.html'">Discover</button>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../image/Ossiano Underwater Restaurant.jpg" alt="Ossiano">
+            <div class="restaurant-info">
+                <div class="tag">Underwater Fine Dining</div>
+                <h2>Ossiano</h2>
+                <div class="gold-line"></div>
+                <button class="explore-btn" onclick="window.location.href='Ossiano Underwater Restaurant.html'">Discover</button>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../image/TIKKI-Restaurant.jpg" alt="TIKKI">
+            <div class="restaurant-info">
+                <div class="tag">Global Fusion</div>
+                <h2>TIKKI</h2>
+                <div class="gold-line"></div>
+                <button class="explore-btn" onclick="window.location.href='TIKKI-Restaurant.html'">Discover</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+    <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+
+    <div class="indicators">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+    </div>
+</div>
+
+<div class="bottom-section">
+    <h2 class="section-title">Choose Your Experience</h2>
+    <p class="section-desc">Four distinct restaurants, each a world of its own</p>
+    <button class="home-btn" onclick="window.location.href='Mid-mountain hotel.html'">Return to Home</button>
+</div>
+
+<script src="../js/ordering.js"></script>
+</body>
+</html>

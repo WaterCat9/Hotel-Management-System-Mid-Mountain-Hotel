@@ -1,0 +1,111 @@
+/* ========== 财务管理表格样式 ========== */
+.finance-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e0e0e0;
+}
+
+.finance-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.finance-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.finance-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.finance-table th,
+.finance-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.finance-table th {
+    background-color: #c5a059;
+    color: white;
+    font-weight: 600;
+}
+
+.finance-table tr:last-child td {
+    border-bottom: none;
+}
+
+.finance-table tr:hover {
+    background-color: #f9f5e8;
+}
+
+.table-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+}
+
+.table-btn {
+    background-color: #c5a059;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.table-btn:hover {
+    background-color: #a88947;
+}
+
+/* 响应式：手机屏幕时表格变为块级 */
+@media (max-width: 768px) {
+    .finance-table,
+    .finance-table thead,
+    .finance-table tbody,
+    .finance-table tr,
+    .finance-table th,
+    .finance-table td {
+        display: block;
+    }
+
+    .finance-table thead {
+        display: none;
+    }
+
+    .finance-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #eee;
+        border-radius: 0.5rem;
+    }
+
+    .finance-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .finance-table td:last-child {
+        border-bottom: none;
+    }
+
+    .finance-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        width: 40%;
+    }
+}

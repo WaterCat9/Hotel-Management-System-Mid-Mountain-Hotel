@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Experience | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/review.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="../image/logo.png" alt="Mid-Mountain" class="nav-logo" onclick="window.location.href='Mid-mountain hotel.html'">
+    <a href="Mid-mountain hotel.html" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="container">
+    <div class="page-header">
+        <div class="page-tag">Your Voice</div>
+        <h1 class="page-title">Share Your Experience</h1>
+        <div class="gold-line"></div>
+    </div>
+
+    <div class="card">
+        <div class="form-group">
+            <label>Food Rating</label>
+            <select id="foodScore">
+                <option value="5">★★★★★ &mdash; Exceptional</option>
+                <option value="4">★★★★☆ &mdash; Excellent</option>
+                <option value="3">★★★☆☆ &mdash; Good</option>
+                <option value="2">★★☆☆☆ &mdash; Fair</option>
+                <option value="1">★☆☆☆☆ &mdash; Needs Improvement</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Service Rating</label>
+            <select id="serviceScore">
+                <option value="5">★★★★★ &mdash; Exceptional</option>
+                <option value="4">★★★★☆ &mdash; Excellent</option>
+                <option value="3">★★★☆☆ &mdash; Good</option>
+                <option value="2">★★☆☆☆ &mdash; Fair</option>
+                <option value="1">★☆☆☆☆ &mdash; Needs Improvement</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Your Comments</label>
+            <textarea id="reviewComments" rows="4" placeholder="Tell us about your dining experience..."></textarea>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-success" onclick="submitReview()">Submit Review</button>
+            <button class="btn" onclick="window.location.href='Mid-mountain hotel.html'">Back to Home</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Mid-Mountain Hotel &copy; 2026 &mdash; All Rights Reserved</p>
+    </footer>
+</div>
+
+<script src="../js/review.js"></script>
+</body>
+</html>

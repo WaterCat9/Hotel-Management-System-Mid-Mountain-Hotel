@@ -1,0 +1,40 @@
+footer {
+    background-color: #1a1a1a;
+    color: #999;
+    padding: 2.5rem 1.25rem;
+}
+
+.footer-content {
+    max-width: 75rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.875rem;
+}
+
+.footer-info h3 {
+    color: #c5a059;
+    margin-bottom: 0.625rem;
+}
+
+.footer-contact p {
+    margin-bottom: 0.3125rem;
+}
+
+.footer-social a {
+    color: #999;
+    text-decoration: none;
+    margin: 0 0.3125rem;
+}
+
+.footer-social a:hover {
+    color: #c5a059;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

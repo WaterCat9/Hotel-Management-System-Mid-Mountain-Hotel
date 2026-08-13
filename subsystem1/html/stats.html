@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/stats.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="../image/logo.png" alt="Mid-Mountain" class="nav-logo" onclick="window.location.href='Mid-mountain hotel.html'">
+    <a href="Mid-mountain hotel.html" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="hero">
+    <img src="../image/mid-mountain hotel.jpg" alt="Mid-Mountain Hotel">
+    <div class="hero-text">
+        <div class="hero-tag">Dashboard</div>
+        <h1 class="hero-title">Restaurant Insights</h1>
+    </div>
+</div>
+
+<!-- Login Page -->
+<div id="loginPage">
+    <div class="stats-section" style="max-width: 500px; margin: -60px auto 0; position: relative; z-index: 10;">
+        <div class="card" style="background:#131922; border:1px solid rgba(201,168,76,0.12); padding: 40px;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:#FFF; text-align:center; margin-bottom:25px;">Login to View Stats</h3>
+            <div class="form-group" style="margin-bottom:18px;">
+                <label style="font-family:'Lato',sans-serif; font-size:11px; letter-spacing:3px; color:rgba(232,213,160,0.7); display:block; margin-bottom:8px;">Username</label>
+                <input type="text" id="username" placeholder="Enter username" style="width:100%; padding:14px; background:#0A0D14; border:1px solid rgba(201,168,76,0.2); color:#E8D5A0; font-family:'Cormorant Garamond',serif; font-size:16px; outline:none;">
+            </div>
+            <div class="form-group" style="margin-bottom:25px;">
+                <label style="font-family:'Lato',sans-serif; font-size:11px; letter-spacing:3px; color:rgba(232,213,160,0.7); display:block; margin-bottom:8px;">Password</label>
+                <input type="password" id="password" placeholder="Enter password" style="width:100%; padding:14px; background:#0A0D14; border:1px solid rgba(201,168,76,0.2); color:#E8D5A0; font-family:'Cormorant Garamond',serif; font-size:16px; outline:none;">
+            </div>
+            <button onclick="checkLogin()" style="width:100%; padding:16px; background:#C9A84C; color:#0A0D14; border:1px solid #C9A84C; font-family:'Lato',sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; cursor:pointer; font-weight:700;">Login</button>
+        </div>
+    </div>
+</div>
+
+<!-- Immediately check login state — no waiting for images to load -->
+<script>
+(function() {
+    if (localStorage.getItem('statsLoggedIn') === 'true') {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('statsPage').style.display = 'block';
+    }
+})();
+</script>
+
+<!-- Stats Page -->
+<div id="statsPage" style="display: none;">
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="ordersToday">0</div>
+                <div class="stat-label">Orders Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="moneyMade">$0</div>
+                <div class="stat-label">Revenue Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="mostPopular">&mdash;</div>
+                <div class="stat-label">Most Popular Dish</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="happyCustomers">&mdash;</div>
+                <div class="stat-label">Guest Satisfaction</div>
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-image">
+                <img src="../image/order food.jpg" alt="Orders">
+            </div>
+            <div class="detail-text">
+                <span class="tag">Performance</span>
+                <h2>Orders Today</h2>
+                <div class="line"></div>
+                <p>Total number of orders placed today across all four signature restaurants. From Pizza Church to Ossiano, each order represents a curated dining experience crafted for our distinguished guests.</p>
+                <div class="big-number" id="ordersTodayDetail">0</div>
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-text">
+                <span class="tag">Guest Favorite</span>
+                <h2>Most Popular Dish</h2>
+                <div class="line"></div>
+                <p>The dish that has captured the hearts of our guests. This reflects the pinnacle of culinary preference among our diverse and discerning clientele.</p>
+                <div class="big-number" id="mostPopularDetail" style="font-size:36px;">&mdash;</div>
+            </div>
+            <div class="detail-image">
+                <img src="../image/my orders.jpg" alt="Popular">
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-image">
+                <img src="../image/pay bill.jpg" alt="Revenue">
+            </div>
+            <div class="detail-text">
+                <span class="tag">Financial</span>
+                <h2>Revenue Today</h2>
+                <div class="line"></div>
+                <p>Total revenue generated from today's dining experiences across all establishments. Each figure represents our commitment to delivering exceptional value through world-class cuisine.</p>
+                <div class="big-number" id="moneyMadeDetail">$0.00</div>
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-text">
+                <span class="tag">Quality</span>
+                <h2>Guest Satisfaction</h2>
+                <div class="line"></div>
+                <p>Our guests' satisfaction is the true measure of our success. This metric reflects the percentage of diners who rated their experience as exceptional.</p>
+                <div class="big-number" id="happyCustomersDetail">&mdash;</div>
+            </div>
+            <div class="detail-image">
+                <img src="../image/review.jpg" alt="Reviews">
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        <button class="back-btn" onclick="window.location.href='Mid-mountain hotel.html'">Return to Home</button>
+        <button class="back-btn" onclick="logout()" style="margin-left:15px; border-color:rgba(220,80,80,0.4); color:rgba(220,140,140,0.7);">Logout</button>
+    </div>
+</div>
+
+<footer>
+    <p>Mid-Mountain Hotel &copy; 2026 &mdash; All Rights Reserved</p>
+</footer>
+
+<script src="../js/stats.js"></script>
+</body>
+</html>

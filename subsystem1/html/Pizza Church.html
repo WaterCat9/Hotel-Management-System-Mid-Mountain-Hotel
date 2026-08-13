@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Church | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/Pizza Church.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="../image/logo.png" alt="Mid-Mountain" class="nav-logo" onclick="window.location.href='Mid-mountain hotel.html'">
+    <a href="Mid-mountain hotel.html" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="hero">
+    <img src="../Pizza Church-orders/Pizza Church.jpg" alt="Pizza Church">
+    <div class="hero-overlay">
+        <div class="hero-tag">Artisanal Pizzeria</div>
+        <h1 class="hero-title">Pizza Church</h1>
+        <p class="hero-subtitle">Divine flavors in a consecrated setting</p>
+    </div>
+</div>
+
+<section class="content-section">
+    <!-- Cheese Pizza -->
+    <div class="dish-row">
+        <div class="dish-image-wrap">
+            <img src="../Pizza Church-orders/Cheese Pizza.jpg" alt="Cheese Pizza">
+        </div>
+        <div class="dish-text">
+            <span class="tag">Signature Classic</span>
+            <h2>Cheese Pizza</h2>
+            <div class="line"></div>
+            <p>A masterpiece of simplicity — hand-stretched dough kissed by flame, crowned with velvety mozzarella di bufala and aged Parmigiano-Reggiano. Finished with fresh basil from our garden and a whisper of extra-virgin olive oil.</p>
+            <div class="price">$88</div>
+            <button class="order-btn" onclick="addOrder('Cheese Pizza', '88')">Add to Order</button>
+        </div>
+    </div>
+
+    <!-- Crispy Sausage Pizza -->
+    <div class="dish-row">
+        <div class="dish-text" style="order: 2;">
+            <span class="tag">House Specialty</span>
+            <h2>Crispy Sausage Pizza</h2>
+            <div class="line"></div>
+            <p>Artisanal Italian sausage sourced from heritage-breed pork, layered over San Marzano tomato sauce and fior di latte. The crust achieves the perfect balance of crunch and chew — a testament to our 72-hour fermentation.</p>
+            <div class="price">$128</div>
+            <button class="order-btn" onclick="addOrder('Crispy Sausage Pizza', '128')">Add to Order</button>
+        </div>
+        <div class="dish-image-wrap" style="order: 1;">
+            <img src="../Pizza Church-orders/Crispy Sausage Pizza.jpg" alt="Crispy Sausage Pizza">
+        </div>
+    </div>
+
+    <!-- Chef Section -->
+    <div class="chef-section">
+        <div class="chef-image-wrap">
+            <img src="../Pizza Church-orders/Executive Chef--Ultraman Steven.jpg" alt="Executive Chef Ultraman Steven">
+        </div>
+        <div class="chef-text">
+            <span class="tag">Culinary Master</span>
+            <h2>Chef Ultraman Steven</h2>
+            <div class="line"></div>
+            <p>With decades of international experience spanning Naples, Rome, and New York, our Executive Chef brings an uncompromising dedication to the art of pizza. Every dough is a canvas; every topping, a brushstroke. Chef Steven's philosophy is simple: the finest ingredients, treated with reverence, create the most transcendent experiences.</p>
+        </div>
+    </div>
+
+    <div class="info-card" style="margin-top: 80px;">
+        <h3>Pizza Church</h3>
+        <p>Housed in a beautifully restored chapel, our pizzeria elevates Italy's most beloved export to celestial heights.</p>
+        <button class="back-btn" onclick="window.location.href='Mid-mountain hotel.html'">Return to Home</button>
+    </div>
+</section>
+
+<footer>
+    <p>Mid-Mountain Hotel &copy; 2026 &mdash; Pizza Church</p>
+</footer>
+
+<script src="../js/Pizza Church.js"></script>
+</body>
+</html>
