@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner | Finance | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <link rel="stylesheet" href="css/finance.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <img src="../images/logo.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="../importantPages/index.html">Home</a></li>
+        <li><a href="../subsystem2/main.html">Finance</a></li>
+        <li><a href="../pages/About.html">About</a></li>
+        <li><a href="../pages/Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='../importantPages/subsystems.html'">Subsystems</button>
+</nav>
+
+<main class="finance-page">
+    <div class="page-hero">
+        <div class="page-tag">Plan Ahead</div>
+        <h1 class="page-heading">Budget Planner</h1>
+        <div class="page-divider"></div>
+        <p class="page-desc">Track income and expenses, set budgets, and monitor your financial health</p>
+    </div>
+
+    <!-- 汇总 -->
+    <div class="budget-summary" id="budgetSummary">
+        <div class="summary-item">
+            <div class="summary-label">Total Income</div>
+            <div class="summary-value income" id="totalIncome">¥0</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Total Expenses</div>
+            <div class="summary-value expense" id="totalExpense">¥0</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Balance</div>
+            <div class="summary-value balance" id="totalBalance">¥0</div>
+        </div>
+    </div>
+
+    <!-- 添加记录表单 -->
+    <div class="budget-form">
+        <h2 style="margin-bottom: 22px; font-size: 22px; font-weight: 500;">Add New Record</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="bDate">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="bCategory">
+                    <option>Room Revenue</option>
+                    <option>Dining Revenue</option>
+                    <option>Entertainment Revenue</option>
+                    <option>Spa Revenue</option>
+                    <option>Staff Salary</option>
+                    <option>Utilities</option>
+                    <option>Maintenance</option>
+                    <option>Supplies</option>
+                    <option>Marketing</option>
+                    <option>Other Income</option>
+                    <option>Other Expense</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Amount (¥)</label>
+                <input type="number" id="bAmount" placeholder="Enter amount" min="0" step="0.01">
+            </div>
+        </div>
+        <div style="display: flex; gap: 12px;">
+            <button class="btn-gold btn-gold-filled" onclick="addRecord('income')">+ Add Income</button>
+            <button class="btn-gold" onclick="addRecord('expense')">+ Add Expense</button>
+        </div>
+        <p id="formMsg" style="margin-top: 10px; font-size: 14px; color: #C9A84C;"></p>
+    </div>
+
+    <!-- 记录列表 -->
+    <div class="table-section">
+        <div class="table-header">
+            <h2>All Records</h2>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="finance-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="recordBody">
+                    <tr><td colspan="5" style="text-align:center;color:#999;padding:30px;">
+                        No records yet. Add your first income or expense above.
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-info">
+            <h3>Mid-Mountain Hotel</h3>
+            <p>© 2026 All rights reserved</p>
+        </div>
+        <div class="footer-contact">
+            <p>Email: finance@midmountain.com</p>
+            <p>Phone: +86 123 4567 8900</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 用 localStorage 存储预算记录
+    function getRecords() {
+        var stored = localStorage.getItem('finance_budget_records');
+        return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveRecords(records) {
+        localStorage.setItem('finance_budget_records', JSON.stringify(records));
+    }
+
+    function addRecord(type) {
+        var dateInput = document.getElementById('bDate');
+        var category = document.getElementById('bCategory').value;
+        var amountInput = document.getElementById('bAmount');
+        var msg = document.getElementById('formMsg');
+
+        if (!dateInput.value) {
+            msg.textContent = 'Please select a date.';
+            return;
+        }
+        if (!amountInput.value || parseFloat(amountInput.value) <= 0) {
+            msg.textContent = 'Please enter a valid amount.';
+            return;
+        }
+
+        var records = getRecords();
+        records.push({
+            date: dateInput.value,
+            category: category,
+            type: type,
+            amount: parseFloat(amountInput.value)
+        });
+        saveRecords(records);
+
+        // 清空表单
+        dateInput.value = '';
+        amountInput.value = '';
+        msg.textContent = 'Record added successfully!';
+
+        renderRecords();
+    }
+
+    function deleteRecord(index) {
+        var records = getRecords();
+        records.splice(index, 1);
+        saveRecords(records);
+        renderRecords();
+    }
+
+    function renderRecords() {
+        var records = getRecords();
+        var tbody = document.getElementById('recordBody');
+        var totalIncome = 0;
+        var totalExpense = 0;
+
+        if (records.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#999;padding:30px;">No records yet. Add your first income or expense above.</td></tr>';
+        } else {
+            var html = '';
+            for (var i = records.length - 1; i >= 0; i--) {
+                var r = records[i];
+                var typeClass = r.type === 'income' ? 'paid' : 'cancelled';
+                var typeLabel = r.type === 'income' ? 'Income' : 'Expense';
+                var amountColor = r.type === 'income' ? 'color:#2E7D32;' : 'color:#C62828;';
+                if (r.type === 'income') {
+                    totalIncome += r.amount;
+                } else {
+                    totalExpense += r.amount;
+                }
+                html += '<tr>' +
+                    '<td>' + r.date + '</td>' +
+                    '<td>' + r.category + '</td>' +
+                    '<td><span class="status-badge ' + typeClass + '">' + typeLabel + '</span></td>' +
+                    '<td style="' + amountColor + '; font-weight: 600;">¥' + r.amount.toFixed(2) + '</td>' +
+                    '<td><a href="#" class="table-link" onclick="deleteRecord(' + i + '); return false;">Delete</a></td>' +
+                    '</tr>';
+            }
+            tbody.innerHTML = html;
+        }
+
+        document.getElementById('totalIncome').textContent = '¥' + totalIncome.toFixed(2);
+        document.getElementById('totalExpense').textContent = '¥' + totalExpense.toFixed(2);
+        var balance = totalIncome - totalExpense;
+        var balEl = document.getElementById('totalBalance');
+        balEl.textContent = '¥' + balance.toFixed(2);
+        balEl.style.color = balance >= 0 ? '#2E7D32' : '#C62828';
+    }
+
+    // 页面加载时渲染
+    renderRecords();
+</script>
+
+</body>
+</html>

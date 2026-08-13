@@ -1,0 +1,579 @@
+<html>
+<head>
+<style>
+/* ========== 原有 CSS 保持不变 ========== */
+body {
+    background-color: #fdf8f0;
+    margin: 0;
+    padding-top: 80px;
+}
+
+.model{
+    display: none;
+    max-width: 500px;
+    margin: 20px 0;
+    padding: 24px 28px;
+    background-color: #fdf8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    transition: box-shadow 0.2s ease;
+    position: fixed;
+    top: 15%;
+    left: 32%;
+    transform: scale(1.3);
+    visibility: visible;
+}
+.content{
+    flex: 0 1 800px;
+    background-color: white;
+    border: 1px solid #e8dcc8;
+    border-radius: 16px;
+    text-align: left;
+    padding: 24px 20px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+.content2{
+    flex: 0 1 250px;
+    background-color: #ffe4a7;
+    border: 2px solid #f0d6a8;
+    border-radius: 16px;
+    text-align: left;
+    padding: 24px 20px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+.room{ 
+   display: inline-flex;
+   margin: 5px;
+   width: 20px;
+   gap: 4px;
+   background-color: rgb(255, 255, 255);
+   border: 2px solid #e3c779;
+   border-radius: 16px;
+   padding: 20px ;
+   box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+   color: #1f1a10;
+   font-family: 'Georgia','Times New Roman','宋体',serif;
+   font-size: 15px;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   transition: all 0.2s ease;
+}
+.room:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px rgba(0,0,0,0.1);
+}
+.occupied { 
+    background: #ff6b6b;
+    color:white; 
+    cursor:not-allowed
+}
+.occupied:hover{
+    transform: none;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+}
+.empty{
+    background-color: rgb(98, 191, 98);
+    color:white;
+}
+.empty:hover{
+    background-color: rgb(80, 170, 80);
+}
+.selected{
+    background-color: rgb(73, 73, 216);
+    color: white;
+}
+.selected:hover{
+    background-color: rgb(60, 60, 200);
+}
+h4{
+    display: inline-block;
+    margin: 0,9px,0,0;
+}
+.sure{
+    display: none;
+    background-color: rgb(89, 189, 89);
+    color: white;
+    height: 36px;
+    width: 130px;
+    border-radius: 5px;
+    border: 2px solid #6db967;
+    justify-content: center;
+    align-items: center;  
+    margin-top: 8px;
+    font-size: 14px;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    margin-left: 140px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.sure:hover{
+    background-color: #78d178;
+    transform: scale(1.03);
+}
+.paymodel{
+    position: fixed;
+    display: none;
+    max-width: 500px;
+    margin: 20px 0;
+    padding: 24px 28px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    transition: box-shadow 0.2s ease;
+    top: 15%;
+    left: 32%;
+    transform: scale(1.3);
+    visibility: visible;
+}
+.checkbtn {
+    display: flex;
+}
+.page{
+    max-width: 500px;
+    margin: 20px 0;
+    padding: 24px 28px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    transition: box-shadow 0.2s ease;
+    position: fixed;
+    top: 15%;
+    left: 32%;
+    transform: scale(1.3);
+    visibility: visible;
+}
+.title{
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #1f1a10;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom:2px solid #f3d779;
+    display: inline-block;
+}
+.button{
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f1a10;
+    background-color: #fceeb8;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 30px;
+    border:2px solid #e3c779;
+    margin-top: 8px;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.8);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.button:hover{
+    background-color: #fbe298;
+    transform: scale(1.03);
+}
+.button2{
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 16px;
+    font-weight:400;
+    color: #1f1a10;
+    background-color: #fceeb8;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border:2px solid #e3c779;
+    margin-top: 8px;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.8);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.button2:hover{
+    background-color: #fbe298;
+    transform: scale(1.03);
+}
+.repair{
+    background: #c0c0c0;
+    color:white; 
+    cursor:not-allowed
+}
+.repair:hover{
+    transform: none;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+}
+.ctnt{
+   font-family: 'Georgia','Times New Roman','宋体',serif;
+   font-size: 15px;
+   margin: 8px;
+   margin-left: 30px;
+}
+.btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    opacity: 0.9;
+}
+
+.nav-logo {
+    height: 40px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #2c2c2c;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #C9A84C;
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover {
+    color: #C9A84C;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-book-btn {
+    padding: 12px 30px;
+    border: 1px solid #C9A84C;
+    background: transparent;
+    color: #C9A84C;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-book-btn:hover {
+    background: #C9A84C;
+    color: #FFFFFF;
+}
+
+.qrmodel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    z-index: 3000;
+    text-align: center;
+    font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+    max-width: 350px;
+    width: 90%;
+}
+.qrmodel img {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    display: block;
+    border: 1px solid #e8dcc8;
+    border-radius: 10px;
+}
+.qrmodel .qr-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f1a10;
+    margin-bottom: 10px;
+}
+.qrmodel .qr-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+}
+.qrmodel .qr-confirm {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 30px;
+    background-color: #fceeb8;
+    border: 2px solid #e3c779;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.qrmodel .qr-confirm:hover {
+    background-color: #fbe298;
+}
+</style>
+<meta charset="UTF-8">
+</head>
+<body>
+    
+<nav class="navbar" id="navbar">
+    <img src="7109c4827d5f9e9361d861811ddb225c.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href=" ">Home</a ></li>
+        <li><a href="reservation.html">Reservation</a ></li>
+        <li><a href="repair.html">Repair</a ></li>
+        <li><a href="roomstatus.html">Roomstatus</a ></li>
+        <li><a href="Cleaning.html">Cleaning</a ></li>
+        <li><a href="comment.html">Comment</a ></li>
+        <li><a href="supply.html">Supply</a ></li>
+        <li><a href="checkout.html">Check-out</a ></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='rooms.html'">Back to Home</button>
+</nav>
+
+    <div class="page" id="page">
+        <h3 class="title">Our Hotel Single Room</h3>    
+        <p>
+            Our hotel's single rooms are meticulously designed for travelers seeking tranquility and quality. Each room is furnished with a high‑quality comfortable single bed and skin‑friendly bedding, complemented by a constant‑temperature air conditioner, HD LCD TV, high‑speed free Wi‑Fi, an independent bathroom with 24‑hour constant‑temperature hot water, as well as a simple desk, charging ports, a full‑length mirror, and a storage wardrobe to meet daily living and working needs.
+        </p>
+        <p>
+            We also provide thoughtful services including daily professional housekeeping, towel and bath towel replacement, complimentary bottled water, 24‑hour front desk service, luggage storage, and wake‑up calls. The space is clean, elegant, quiet, and private, allowing you to enjoy a secure and comfortable stay during your busy journey.
+        </p>
+        <button class="button" id="btn">check and choose your room</button>
+    </div>
+    <div class="model" id = "open">
+        <div class="content">
+            <h3 class="title">Status of rooms</h3>
+            <p>
+                <div class="ctnt">Total number of rooms:<span id = "total">0</span></div>
+                <div class="ctnt">Occupied:<span id = "occupied">0</span></div>
+                <div class="ctnt">Empty:<span id ="empty">0</span></div>
+                <div class="ctnt">Repairing:<span id="repair">0</span></div>
+                <div>
+                    <div class="ctnt">Enter the days to stay:
+                        <label>
+                            <input type="number" name="days" min="0" value="0" max="10">
+                        </label>
+                    </div>
+                </div>
+            </p>
+            <div id = "roomlist"></div>
+            <p class="content2">
+                chosen:<span id = "selectedroom"></span><span><button class="sure" id="yes">Confirm</button></span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="paymodel" id="pay">
+        <dl>
+            <dt><h2 class="title">Your Information:</h2></dt>
+                <dd>
+                    <ul type="circle">
+                        <li class="ctnt">Time:<span id="time">-</span></li>
+                        <li class="ctnt">Room Type:<span>Single Room</span></li>
+                        <li class="ctnt">Price:<span>￥298/night</span></li>
+                        <li class="ctnt">Room ID:<span id="payroom">-</span></li>
+                        <li class="ctnt">Pay:<span id="price">-</span></li>
+                        <li class="ctnt">Payment Method:
+                            <br><div class="btn-group">
+                                <button class="button2 pay-method">WeChat pay</button>
+                                <button class="button2 pay-method">Alipay</button>
+                                <button class="button2 pay-method">Credit card</button>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </dt>
+        </dl>                
+    </div>
+
+    <div class="qrmodel" id="qrmodel">
+        <button class="qr-close" id="qr-close">×</button>
+        <div class="qr-title">Scan to Pay</div>
+        <img src="c323ac43e33590e3a87930f1abf989e9.jpg" alt="Payment QR Code" id="qr-image">
+        <p style="color:#666;">Please scan the QR code with your payment app</p>
+        <button class="qr-confirm" id="qr-confirm">Payment Completed</button>
+    </div>
+
+<script>
+    const org_Singlerooms=[
+        {id:101,status:0},
+        {id:102,status:0},
+        {id:103,status:0},
+        {id:104,status:0},
+        {id:105,status:1},
+        {id:106,status:0},
+        {id:107,status:1},
+        {id:108,status:0},
+        {id:109,status:0},
+        {id:201,status:0},
+        {id:202,status:0},
+        {id:203,status:0},
+        {id:204,status:0},
+        {id:205,status:1},
+    ]
+
+    const model=document.getElementById('open');
+    const btn=document.getElementById('btn')
+    const total=document.getElementById('total');
+    const occupied=document.getElementById('occupied');
+    const empty=document.getElementById('empty');
+    const slt=document.getElementById('selectedroom');
+    const roomlist=document.getElementById('roomlist');
+    const yes=document.getElementById('yes');
+    const payid=document.getElementById('payroom');
+    const paymodel=document.getElementById('pay');
+    const page=document.getElementById('page');
+    const rp=document.getElementById('repair');
+    const day=document.querySelector(`input[type='number']`);
+    const time=document.getElementById('time');
+    const price=document.getElementById('price');
+
+    const qrModal = document.getElementById('qrmodel');
+    const qrClose = document.getElementById('qr-close');
+    const qrConfirm = document.getElementById('qr-confirm');
+    const payButtons = document.querySelectorAll('.pay-method');
+
+    let rooms=loadsinglerooms();
+
+    btn.onclick=function(){
+        model.style.display='flex';
+        btn.style.display='none';
+        page.style.visibility='hidden';
+        renderroom()
+    }
+
+    day.addEventListener('input',recorddays)
+
+    function recorddays(){
+        const days=day.value;
+        let totalprice=0;
+        totalprice=days*298;
+        time.innerText=days;
+        price.innerText=totalprice;
+    }
+
+    function loadsinglerooms(){
+       const stored=localStorage.getItem('singlerooms');
+       if (stored) {
+            return JSON.parse(stored);
+       }
+       else{
+            localStorage.setItem('singlerooms',JSON.stringify(org_Singlerooms));
+            return org_Singlerooms;
+       }
+    }
+
+    function renderroom(){
+        roomlist.innerHTML='';
+        let NumberEmpty=0;
+        let NumberOccupied=0;
+        let NumberRepair=0;
+        rooms.forEach(function(room){
+            const div=document.createElement('div')
+            if (room.status === 1){
+                div.className="room occupied"
+                NumberOccupied++
+            }
+            else if (room.status===2){
+                div.className="room repair";
+                NumberRepair++;
+            }
+            else{
+                div.className="room empty";
+                NumberEmpty++;
+                div.onclick=function(){
+                const selectedrooms=Array.from(document.querySelectorAll('.selected'));
+                selectedrooms.forEach(function(a){a.classList.remove('selected')});
+                div.classList.add('selected');
+                slt.innerText=room.id;
+                yes.style.display='flex';
+        }
+            }
+            div.innerText= room.id;
+            roomlist.appendChild(div);
+            
+        }
+    )
+    total.innerText=rooms.length
+    occupied.innerText= NumberOccupied;
+    empty.innerText= NumberEmpty;
+    rp.innerText=NumberRepair;
+
+    yes.onclick=function(){
+        if (day.value<=0 ||day.value==''){
+            alert('Please enter your stay duration.')
+        }else{
+            yes.style.display='none';
+            paymodel.style.display='flex';
+            payid.innerText=slt.innerText;
+            model.style.display='none'
+        }
+    }
+
+    payButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            qrModal.style.display = 'block';
+
+        });
+    });
+
+    qrClose.addEventListener('click', function() {
+        qrModal.style.display = 'none';
+    });
+    qrConfirm.addEventListener('click', function() {
+        const roomId = parseInt(payid.innerText);
+        if (!roomId) {
+            alert('Payment error: no room selected.');
+            return;
+        }
+        const room = rooms.find(r => r.id === roomId);
+        if (room) {
+            room.status = 1;
+        }
+
+        localStorage.setItem('singlerooms', JSON.stringify(rooms));
+        alert('Payment successful! Room ' + roomId + ' is now occupied.');
+        location.href='rooms.html'
+    })
+    }
+</script>
+</body>
+</html>

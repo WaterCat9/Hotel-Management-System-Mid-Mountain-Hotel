@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: #FBF9F4;
+    color: #2c2c2c;
+    padding-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+p, span, td, th, li, a, button, input, select, label {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+}
+
+/* ========== 页面容器 ========== */
+.finance-page {
+    flex: 1;
+    padding: 60px 40px 80px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ========== 页面头部 ========== */
+.page-hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-tag {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 18px;
+}
+
+.page-heading {
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.page-divider {
+    width: 80px;
+    height: 2px;
+    background: #C9A84C;
+    margin: 0 auto 22px;
+}
+
+.page-desc {
+    font-size: 18px;
+    font-style: italic;
+    color: #777;
+    letter-spacing: 1px;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+
+/* ========== Dashboard 统计卡片 ========== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E0D5;
+    padding: 30px 22px;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #C9A84C;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+}
+
+.stat-icon {
+    font-size: 34px;
+    margin-bottom: 14px;
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #888;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+}
+
+.stat-change {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.stat-change.up { color: #2e7d32; }
+.stat-change.down { color: #c62828; }
+.stat-change.neutral { color: #888; }
+
+
+/* ========== 功能区卡片 ========== */
+.finance-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 50px;
+}
+
+.finance-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E0D5;
+    padding: 40px 28px 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.finance-card:hover {
+    transform: translateY(-6px);
+    border-color: #C9A84C;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.finance-card .card-icon {
+    font-size: 42px;
+    margin-bottom: 18px;
+}
+
+.finance-card h3 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.finance-card p {
+    font-size: 15px;
+    color: #888;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.card-arrow {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.35s ease;
+}
+
+.finance-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ========== 表格样式 ========== */
+.table-section {
+    background: #FFFFFF;
+    border: 1px solid #E5E0D5;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.table-header h2 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.table-link {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.table-link:hover {
+    color: #a88947;
+}
+
+.finance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.finance-table th {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 2px solid #E5E0D5;
+    font-weight: 400;
+}
+
+.finance-table td {
+    padding: 14px 16px;
+    font-size: 16px;
+    color: #444;
+    border-bottom: 1px solid #f0ece0;
+}
+
+.finance-table tbody tr {
+    transition: background 0.25s;
+}
+
+.finance-table tbody tr:hover {
+    background: #FCFAF5;
+}
+
+.finance-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 状态标签 */
+.status-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.status-badge.paid {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.status-badge.pending {
+    background: #FFF8E1;
+    color: #F57F17;
+}
+
+.status-badge.cancelled {
+    background: #FFEBEE;
+    color: #C62828;
+}
+
+
+/* ========== 筛选栏 ========== */
+.filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filter-bar input,
+.filter-bar select {
+    padding: 12px 18px;
+    border: 1px solid #E5E0D5;
+    background: #FFFFFF;
+    font-size: 15px;
+    color: #444;
+    transition: border-color 0.3s;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+    outline: none;
+    border-color: #C9A84C;
+}
+
+.filter-bar input {
+    flex: 1;
+    min-width: 200px;
+}
+
+
+/* ========== 分页 ========== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.page-btn {
+    padding: 10px 18px;
+    border: 1px solid #E5E0D5;
+    background: #FFFFFF;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.page-btn:hover {
+    border-color: #C9A84C;
+    color: #C9A84C;
+}
+
+.page-btn.active {
+    background: #C9A84C;
+    color: #FFFFFF;
+    border-color: #C9A84C;
+}
+
+.page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/* ========== 按钮组件 ========== */
+.btn-gold {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #C9A84C;
+    background: transparent;
+    color: #C9A84C;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-gold:hover {
+    background: #C9A84C;
+    color: #FFFFFF;
+}
+
+.btn-gold-filled {
+    background: #C9A84C;
+    color: #FFFFFF;
+}
+
+.btn-gold-filled:hover {
+    background: #a88947;
+    border-color: #a88947;
+}
+
+
+/* ========== Budget 表单 ========== */
+.budget-form {
+    background: #FFFFFF;
+    border: 1px solid #E5E0D5;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 20px;
+    align-items: end;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #E5E0D5;
+    background: #FFFFFF;
+    font-size: 16px;
+    color: #444;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #C9A84C;
+}
+
+.budget-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.summary-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E0D5;
+    padding: 25px;
+    text-align: center;
+}
+
+.summary-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.summary-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.summary-value.income { color: #2E7D32; }
+.summary-value.expense { color: #C62828; }
+.summary-value.balance { color: #1a1a1a; }
+
+
+/* ========== Footer ========== */
+footer {
+    background: #1a1a1a;
+    padding: 35px 40px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-info h3 {
+    color: #c5a059;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.footer-contact p,
+.footer-info p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+
+/* ========== 响应式 ========== */
+@media (max-width: 1024px) {
+    .stats-grid,
+    .finance-cards,
+    .budget-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    .page-heading {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 768px) {
+    .finance-page {
+        padding: 40px 18px 60px;
+    }
+    .stats-grid,
+    .finance-cards,
+    .budget-summary,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .page-heading {
+        font-size: 32px;
+    }
+    .stat-value {
+        font-size: 30px;
+    }
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filter-bar {
+        flex-direction: column;
+    }
+    .finance-table {
+        display: block;
+        overflow-x: auto;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

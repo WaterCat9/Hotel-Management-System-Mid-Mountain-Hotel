@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Hub | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <link rel="stylesheet" href="css/finance.css">
+</head>
+<body>
+
+<!-- ==================== 导航栏 ==================== -->
+<nav class="navbar" id="navbar">
+    <img src="../images/logo.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="../importantPages/index.html">Home</a></li>
+        <li><a href="../subsystem2/main.html">Finance</a></li>
+        <li><a href="../pages/About.html">About</a></li>
+        <li><a href="../pages/Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='../importantPages/subsystems.html'">Subsystems</button>
+</nav>
+
+<!-- ==================== 财务中心主页 ==================== -->
+<main class="finance-page">
+    <!-- 页面头部 -->
+    <div class="page-hero">
+        <div class="page-tag">Financial Control</div>
+        <h1 class="page-heading">Finance Management</h1>
+        <div class="page-divider"></div>
+        <p class="page-desc">Complete financial visibility — track revenue, manage expenses, and make informed decisions</p>
+    </div>
+
+    <!-- 核心数据概览 -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <h3>Total Revenue</h3>
+            <p class="stat-value">¥86,430</p>
+            <span class="stat-change up">↑ 12.5% vs last month</span>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📤</div>
+            <h3>Total Expenses</h3>
+            <p class="stat-value">¥31,200</p>
+            <span class="stat-change down">↑ 4.8% vs last month</span>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <h3>Net Profit</h3>
+            <p class="stat-value">¥55,230</p>
+            <span class="stat-change up">↑ 18.2% vs last month</span>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🧾</div>
+            <h3>Transactions</h3>
+            <p class="stat-value">247</p>
+            <span class="stat-change neutral">This month</span>
+        </div>
+    </div>
+
+    <!-- 功能入口卡片 -->
+    <div class="finance-cards">
+        <div class="finance-card" onclick="location.href='finance_dashboard.html'">
+            <div class="card-icon">📈</div>
+            <h3>Dashboard</h3>
+            <p>Visual overview of revenue, occupancy, and key performance indicators at a glance</p>
+            <span class="card-arrow">View Dashboard &rarr;</span>
+        </div>
+        <div class="finance-card" onclick="location.href='finance_transactions.html'">
+            <div class="card-icon">🧾</div>
+            <h3>Transactions</h3>
+            <p>Browse, search, and manage all financial transactions with powerful filters</p>
+            <span class="card-arrow">View Transactions &rarr;</span>
+        </div>
+        <div class="finance-card" onclick="location.href='budget.html'">
+            <div class="card-icon">📋</div>
+            <h3>Budget Planner</h3>
+            <p>Plan budgets, track income vs expenses, and stay on top of your financial goals</p>
+            <span class="card-arrow">Manage Budget &rarr;</span>
+        </div>
+        <div class="finance-card" onclick="location.href='reports.html'">
+            <div class="card-icon">📑</div>
+            <h3>Reports</h3>
+            <p>Generate monthly, quarterly, and annual financial reports for management review</p>
+            <span class="card-arrow">View Reports &rarr;</span>
+        </div>
+        <div class="finance-card" onclick="location.href='finance_dashboard.html'">
+            <div class="card-icon">🔔</div>
+            <h3>Alerts</h3>
+            <p>Configure budget alerts and get notified when thresholds are reached</p>
+            <span class="card-arrow">Set Alerts &rarr;</span>
+        </div>
+        <div class="finance-card" onclick="location.href='finance_transactions.html'">
+            <div class="card-icon">⚙️</div>
+            <h3>Settings</h3>
+            <p>Configure tax rates, currency preferences, and financial categories</p>
+            <span class="card-arrow">Configure &rarr;</span>
+        </div>
+    </div>
+</main>
+
+<!-- ==================== 页脚 ==================== -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-info">
+            <h3>Mid-Mountain Hotel</h3>
+            <p>© 2026 All rights reserved</p>
+        </div>
+        <div class="footer-contact">
+            <p>Email: finance@midmountain.com</p>
+            <p>Phone: +86 123 4567 8900</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

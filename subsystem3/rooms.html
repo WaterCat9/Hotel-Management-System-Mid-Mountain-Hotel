@@ -1,0 +1,653 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+<style>
+body {
+    background-color: #fdf8f0;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    opacity: 0.9;
+}
+
+.nav-logo {
+    height: 80px;
+    width: 180px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #2c2c2c;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #C9A84C;
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover {
+    color: #C9A84C;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-book-btn {
+    padding: 12px 30px;
+    border: 1px solid #C9A84C;
+    background: transparent;
+    color: #C9A84C;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-book-btn:hover {
+    background: #C9A84C;
+    color: #FFFFFF;
+}
+
+.hotel3 {
+    max-width: 1200px;
+    margin: 100px auto 40px;
+    background-color: #ffffff;
+    border: 2px solid #f3d779;
+    border-radius: 24px;
+    padding: 30px 28px 40px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    text-align: center;
+}
+
+.title {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1f1a10;
+    margin-bottom: 10px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid #f3d779;
+    display: inline-block;
+}
+
+.button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 20px 10px 10px;
+    margin-top: 20px;
+    background-color: transparent;
+}
+
+.hotel {
+    flex: 0 1 220px;
+    background-color: #fffcf3;
+    border: 1px solid #e8dcc8;
+    border-radius: 18px;
+    padding: 24px 18px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+}
+
+.hotel:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 24px rgba(0,0,0,0.1);
+    background-color: #fff7e1;
+    border-color: #f3d779;
+}
+
+.hotel::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #f3d779;
+    border-radius: 2px;
+    margin-bottom: 12px;
+}
+
+.content {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f1a10;
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    display: block;
+}
+
+.part {
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    border: 1px solid #e8dcc8;
+    border-radius: 20px;
+    padding: 28px 32px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    color: #1f1a10;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.part dl {
+    margin: 0;
+}
+
+.part dt {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #5a4a30;
+    border-left: 4px solid #f3d779;
+    padding-left: 12px;
+}
+
+.part dd {
+    margin-left: 0;
+}
+
+.dscp {
+    list-style-type: disc;
+    padding-left: 24px;
+}
+
+.dscp li {
+    margin-bottom: 8px;
+    font-size: 17px;
+    color: #3a3224;
+}
+
+/* ========== 大卡片容器（交错排列） ========== */
+.feature-cards {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.feature-card {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+/* 奇偶卡片横向偏移，制造错位感 */
+.feature-card:nth-child(odd) {
+    margin-left: -3%;
+}
+.feature-card:nth-child(even) {
+    margin-right: -3%;
+}
+
+.feature-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+}
+
+/* 图片在左（默认） */
+.feature-card.left-image .feature-image {
+    order: 1;
+}
+.feature-card.left-image .feature-info {
+    order: 2;
+}
+
+/* 图片在右 */
+.feature-card.right-image .feature-image {
+    order: 2;
+}
+.feature-card.right-image .feature-info {
+    order: 1;
+}
+
+.feature-image {
+    flex: 1 1 300px;
+    min-height: 448px;
+    background-color: #f5ecd7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.feature-info {
+    flex: 2 1 400px;
+    padding: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-info h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f3d779;
+    display: inline-block;
+    background: linear-gradient(135deg, #c5a059 0%, #8b7a4c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.feature-info p {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #4a3f2e;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .hotel { flex: 0 1 160px; }
+    .part { padding: 20px 22px; }
+    .feature-card {
+        flex-direction: column !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .feature-image { min-height: 280px; }
+}
+
+/* ========== 全屏背景区 ========== */
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(251, 249, 244, 0.1) 0%,
+        rgba(251, 249, 244, 0.2) 40%,
+        rgba(251, 249, 244, 0.6) 80%,
+        #FBF9F4 100%
+    );
+    z-index: 2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+    pointer-events: none;
+}
+
+.hero-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 25px;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 90px;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: 4px;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease 0.2s both;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+}
+
+.hero-divider {
+    width: 100px;
+    height: 2px;
+    background: #C9A84C;
+    margin: 30px auto;
+    animation: fadeInUp 1s ease 0.8s both;
+}
+
+.hero-description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 2px;
+    animation: fadeInUp 1s ease 1s both;
+}
+
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeInUp 1s ease 1.2s both;
+}
+
+.hero-scroll-indicator span {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(201, 168, 76, 0.8);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, #C9A84C, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ========== 区域装饰标题 ========== */
+.section-header {
+    text-align: center;
+    margin: 50px 0 10px;
+    font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+    color: #8b7a4c;
+    font-size: 22px;
+    letter-spacing: 4px;
+    font-weight: 600;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+/* 装饰线：两侧带花纹，中间文字 */
+.section-header::before,
+.section-header::after {
+    content: '✦';
+    font-size: 16px;
+    margin: 0 20px;
+    color: #c5a059;
+    vertical-align: middle;
+}
+
+.section-header::before {
+    margin-right: 15px;
+}
+
+.section-header::after {
+    margin-left: 15px;
+}
+
+/* 也可以添加底部长线 */
+.section-header span {
+    display: inline-block;
+    position: relative;
+    padding: 0 30px;
+}
+
+.section-header span::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #e3c779, transparent);
+}
+
+/* ========== 卡片内备注小字 ========== */
+.note {
+    font-family: 'Lato', 'Georgia', serif;
+    font-size: 15px;
+    color: #8c8c8c;
+    font-style: italic;
+    margin-top: 8px;
+    line-height: 1.5;
+    border-left: 3px solid #e3c779;
+    padding-left: 12px;
+}
+
+/* ========== 动画关键帧 ========== */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.4); }
+}
+</style>
+</head>
+<body>    
+<nav class="navbar" id="navbar">
+    <img src="7109c4827d5f9e9361d861811ddb225c.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="../importantPages/index.html">Home</a ></li>
+        <li><a href="reservation.html">Reservation</a ></li>
+        <li><a href="repair.html">Repair</a ></li>
+        <li><a href="roomstatus.html">Roomstatus</a ></li>
+        <li><a href="Cleaning.html">Cleaning</a ></li>
+        <li><a href="comment.html">Comment</a ></li>
+        <li><a href="supply.html">Supply</a ></li>
+        <li><a href="checkout.html">Check-out</a ></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='rooms.html'">Back to Home</button>
+</nav>
+
+<div class="hero-container">
+    <img src="d870c17e23238d740c3df9a9d6a75cb8.jpg" alt="Mid-Mountain Hotel">
+    <div class="hero-overlay">
+        <div class="hero-subtitle">Welcome to Mid-Mountain Hotel</div>
+        <h1 class="hero-title">Room<br>Management</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-description">Where culinary artistry meets timeless elegance</p >
+    </div>
+    <div class="hero-scroll-indicator">
+        <span>Discover</span>
+        <div class="scroll-line"></div>
+    </div>
+</div>
+
+<div class="hotel3">
+    <div class="title">Room Service Management System:</div>
+    <div class="button">
+        <button class="hotel" onclick="location.href='reservation.html'">
+            <div class="content">🏨Hotel Reservation</div>
+        </button>
+        <button class="hotel" onclick="location.href='Cleaning.html'">
+            <div class="content">🧹Hotel Cleaning</div>
+        </button>
+        <button class="hotel" onclick="location.href='repair.html'">
+            <div class="content">🛠︎Equipment Repair</div>
+        </button>
+        <button class="hotel" onclick="location.href='supply.html'">
+            <div class="content">📦Item Restock</div>
+        </button>
+        <button class="hotel" onclick="location.href='comment.html'">
+            <div class="content">😊Living Feedback</div>
+        </button>
+        <button class="hotel" onclick="location.href='checkout.html'">
+            <div class="content">👋Check-out</div>
+        </button>
+        <button class="hotel" onclick="location.href='roomstatus.html'">
+            <div class="content">🗓️Room Status</div>
+        </button>
+    </div>
+</div>
+
+<div class="part">
+    &emsp;&emsp;This system integrates real-time room status monitoring, check-in, check-out, maintenance requests and housekeeping management. With a clear interface and efficient workflow, it improves hotel operation efficiency and service quality, providing safe, stable and convenient digital support for daily management.
+</div>
+
+<div class="feature-cards">
+    <!-- 卡片1：图片左，文字右 -->
+    <div class="feature-card left-image" onclick="location.href='reservation.html'">
+        <div class="feature-image" style="background-image: url('https://img95.699pic.com/photo/50120/3498.jpg_wh860.jpg');"></div>
+        <div class="feature-info">
+            <h3>🏨 Hotel Reservation</h3>
+            <p>Experience the easiest way to book your stay. Our real‑time reservation system displays all available rooms instantly, allowing you to filter by type, price, and view. Complete your booking in seconds and receive immediate confirmation. Whether you're planning a business trip or a leisurely escape, our transparent process and secure payment gateway make reserving the perfect room effortless.</p>
+            <p class="note">✦  Instant confirmation & secure online payment · 24h customer support</p>
+        </div>
+    </div>
+    <!-- 卡片2：图片右，文字左 -->
+    <div class="feature-card right-image" onclick="location.href='Cleaning.html'">
+        <div class="feature-image" style="background-image: url('https://img95.699pic.com/photo/50111/7910.jpg_wh860.jpg');"></div>
+        <div class="feature-info">
+            <h3>🧹 Hotel Cleaning</h3>
+            <p>Cleanliness is the heart of hospitality. Our cleaning management module assigns tasks to dedicated staff, tracks progress in real time, and ensures every corner of every room meets our exacting standards. From routine tidying to deep disinfection, our streamlined workflow guarantees a spotless, welcoming environment for every guest, every single day.</p>
+            <p class="note">✦ Daily & deep cleaning plans · Eco-friendly products</p>
+        </div>
+    </div>
+    <!-- 卡片3：图片左，文字右 -->
+    <div class="feature-card left-image" onclick="location.href='repair.html'">
+        <div class="feature-image" style="background-image: url('https://img95.699pic.com/photo/60016/6338.jpg_wh860.jpg');"></div>
+        <div class="feature-info">
+            <h3>🛠 Equipment Repair</h3>
+            <p>Minimize downtime with our rapid repair module. Submit requests directly through the system and our maintenance team receives them instantly. Track the repair status from report to resolution, ensuring every facility – from air conditioning to lighting – is operating at peak performance. Transparent timelines and quality guarantees keep your hotel running smoothly.</p>
+            <p class="note">✦ Emergency repair in 2 hours · Certified technicians</p>
+        </div>
+    </div>
+    <!-- 卡片4：图片右，文字左 -->
+    <div class="feature-card right-image" onclick="location.href='supply.html'">
+        <div class="feature-image" style="background-image: url('https://www.jiudianrong.com/static/js/umeditor/php/upload/20220919/16635508204545.png');"></div>
+        <div class="feature-info">
+            <h3>📦 Item Restock</h3>
+            <p>Never let essential supplies run low. Our intelligent inventory system sends automatic restock alerts when items fall below threshold levels. Manage toiletries, linens, and amenities with just a few clicks, and keep detailed records for future planning. Standardized material management reduces waste and ensures every room is fully equipped before guests arrive.</p>
+            <p class="note">✦ Auto low-stock alerts · Customizable supply lists</p>
+        </div>
+    </div>
+    <!-- 卡片5：图片左，文字右 -->
+    <div class="feature-card left-image" onclick="location.href='comment.html'">
+        <div class="feature-image" style="background-image: url('http://img.mp.itc.cn/upload/20160525/e0b4b2915aad4ece98e0bf5283bb8057_th.jpg');"></div>
+        <div class="feature-info">
+            <h3>😊 Living Feedback</h3>
+            <p>Your guests' voices shape our service. The feedback module collects reviews and suggestions effortlessly, allowing you to respond quickly and improve continuously. Data analytics highlight trends and areas for enhancement, while automated follow‑ups show guests that their opinions truly matter. Turn feedback into a powerful tool for building loyalty and exceptional experiences.</p>
+            <p class="note">✦ Real-time sentiment analysis · Personalized follow-up</p>
+        </div>
+    </div>
+    <!-- 卡片6：图片右，文字左 -->
+    <div class="feature-card right-image" onclick="location.href='checkout.html'">
+        <div class="feature-image" style="background-image: url('https://bpic.588ku.com/back_origin_min_pic/23/06/29/34b6e7c0cc2fd27cc223360771ff707f.jpg!/fw/750/quality/99/unsharp/true/compress/true');"></div>
+        <div class="feature-info">
+            <h3>👋 Check‑out</h3>
+            <p>Make departures seamless and memorable. Our automated check‑out generates final bills instantly, updates room status, and sends digital receipts. Guests can settle payments and leave with a smile, while housekeeping is immediately notified to prepare the room for the next arrival. A smooth farewell is the perfect ending to any stay.</p>
+            <p class="note">✦ Digital invoices · Express check-out in 60 seconds</p>
+        </div>
+    </div>
+    <!-- 卡片7：图片左，文字右 -->
+    <div class="feature-card left-image" onclick="location.href='roomstatus.html'">
+        <div class="feature-image" style="background-image: url('https://img.shetu66.com/2023/06/25/1687655097494868.png');"></div>
+        <div class="feature-info">
+            <h3>🗓️ Room Status</h3>
+            <p>Gain complete visibility over your property with our real‑time room status monitor. See which rooms are vacant, occupied, being cleaned, or under maintenance at a glance. The intuitive dashboard enables front desk and management teams to make informed decisions instantly, optimizing room turnover and maximizing guest satisfaction.</p>
+            <p class="note">✦ Color-coded dashboard · Instant status updates</p>
+        </div>
+    </div>
+</div>
+
+<div class="part">
+    <dl style="margin-top: 0;">
+        <dt>Module Description:</dt>
+        <dd>
+            <ul type="circle" class="dscp">
+                <li>Hotel Reservation: Real‑time update of room conditions, efficient management of room circulation.</li>
+                <li>Hotel Cleaning: Unified task assignment, track cleaning progress to ensure tidiness.</li>
+                <li>Equipment Repair: Quick repair application, monitor fault handling in time.</li>
+                <li>Item Restock: Automatic reminders for supplies, standardize material management.</li>
+                <li>Living Feedback: Collect feedback, analyze data to improve service quality.</li>
+            </ul>
+        </dd>
+    </dl>
+</div>        
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.feature-card').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+</body>
+</html>

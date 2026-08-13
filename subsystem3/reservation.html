@@ -1,0 +1,453 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+<style>
+    body {
+        background-color: #fdf8f0;
+        margin: 0;
+        padding-top: 100px; 
+        font-family: 'Georgia','Times New Roman','宋体',serif;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 15px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        opacity: 0.9;
+    }
+
+    .nav-logo { height: 40px; cursor: pointer; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+        color: #2c2c2c; text-decoration: none;
+        font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 400;
+        letter-spacing: 3px; text-transform: uppercase;
+        transition: color 0.3s ease; position: relative; padding-bottom: 6px;
+    }
+    .nav-links a::after {
+        content: ''; position: absolute; bottom: 0; left: 0;
+        width: 0; height: 1px; background: #C9A84C;
+        transition: width 0.4s ease;
+    }
+    .nav-links a:hover { color: #C9A84C; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-book-btn {
+        padding: 12px 30px; border: 1px solid #C9A84C;
+        background: transparent; color: #C9A84C;
+        font-family: 'Lato', sans-serif; font-size: 12px;
+        letter-spacing: 3px; text-transform: uppercase;
+        cursor: pointer; transition: all 0.3s ease;
+    }
+    .nav-book-btn:hover { background: #C9A84C; color: #FFFFFF; }
+
+    /* ========== 图片轮播 ========== */
+    .carousel {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 30px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .carousel-track {
+        display: flex;
+        height: 100%;
+        width: max-content;
+        animation: scroll 20s linear infinite;
+    }
+    .carousel-track img {
+        height: 100%;
+        width: 300px;
+        object-fit: cover;
+        margin-right: 4px;
+        border-radius: 8px;
+    }
+    .carousel:hover .carousel-track {
+        animation-play-state: paused;
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .button {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+        padding: 30px 20px;
+        margin: 0 auto;
+        max-width: 1200px;
+        background-color: transparent;
+    }
+
+    .title {
+        font-family: 'Georgia','Times New Roman','宋体',serif;
+        font-size: 34px; font-weight: 700; color: #1f1a10;
+        margin-bottom: 10px; margin-left: 250px;
+        padding-bottom: 14px; border-bottom: 3px solid #f3d779;
+        display: inline-block;
+    }
+
+    .room {
+        flex: 0 1 260px; background-color: white;
+        border: 1px solid #e8dcc8; border-radius: 16px;
+        padding: 24px 20px 20px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+        cursor: pointer; transition: all 0.25s ease;
+        text-align: left; display: flex; flex-direction: column;
+    }
+    .room:hover { transform: translateY(-5px); box-shadow: 0 12px 22px rgba(0,0,0,0.1); border-color: #f3d779; }
+    .text {
+        font-family: 'Georgia','Times New Roman','宋体',serif;
+        font-size: 25px; font-weight: 700; color: #1f1a10;
+        margin-bottom: 8px; padding-bottom: 8px;
+        border-bottom: 2px solid #f3d779; display: inline-block;
+    }
+    dd { font-size: 15px; line-height: 1.6; color: #3d3525; margin-left: 0; }
+    .price {
+        font-family: 'Georgia','Times New Roman','宋体',serif;
+        font-size: 20px; font-weight: 700; color: #1f1a10;
+        background-color: #fceeb8; display: inline-block;
+        padding: 8px 16px; border-radius: 30px;
+        border: 2px solid #e3c779; margin-top: 12px;
+        box-shadow: inset 0 1px 3px rgba(255,255,255,0.8);
+        transition: background-color 0.2s;
+    }
+    .room:hover .price { background-color: #fbe298; }
+
+    /* ========== 区域装饰标题 ========== */
+    .section-header {
+        text-align: center;
+        margin: 50px 0 30px;
+        font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+        color: #8b7a4c;
+        font-size: 22px;
+        letter-spacing: 4px;
+        font-weight: 600;
+        position: relative;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease 0.3s forwards;
+    }
+    .section-header span {
+        display: inline-block;
+        position: relative;
+        padding: 0 30px;
+    }
+    .section-header span::before,
+    .section-header span::after {
+        content: '✦';
+        font-size: 16px;
+        color: #c5a059;
+        vertical-align: middle;
+    }
+    .section-header span::before { margin-right: 15px; }
+    .section-header span::after { margin-left: 15px; }
+    .section-header span::after {
+        content: '';
+        display: none;
+    }
+    .section-header::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(to right, transparent, #e3c779, transparent);
+    }
+
+    /* ========== 大卡片容器 ========== */
+    .detail-cards {
+        max-width: 1200px; margin: 40px auto;
+        padding: 0 20px; display: flex;
+        flex-direction: column; gap: 45px;
+    }
+
+    .detail-card {
+        display: flex; 
+        flex-wrap: wrap;
+        background-color: white; border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        overflow: hidden;
+        opacity: 0; transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s, transform 0.25s;
+        cursor: pointer;
+        border: none; padding: 0;
+        min-height: 450px;
+    }
+
+    /* 交错错位 */
+    .detail-card:nth-child(odd) { margin-left: -3%; }
+    .detail-card:nth-child(even) { margin-right: -3%; }
+
+    .detail-card.visible {
+        opacity: 1; transform: translateY(0);
+    }
+    .detail-card:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+    }
+
+    /* 左右图片顺序控制 */
+    .left-image .detail-image { order: 1; }
+    .left-image .detail-info { order: 2; }
+    .right-image .detail-image { order: 2; }
+    .right-image .detail-info { order: 1; }
+
+    .detail-image {
+        flex: 1 1 300px; min-height: 400px;
+        background-color: #f5ecd7;
+        display: flex; align-items: center; justify-content: center;
+        background-size: cover; background-position: center;
+    }
+
+    .detail-info {
+        flex: 2 1 400px; padding: 50px 40px;
+        display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .detail-info h3 {
+        font-size: 28px; font-weight: 700;
+        margin-top: 0; margin-bottom: 12px; padding-bottom: 12px;
+        border-bottom: 2px solid #f3d779;
+        display: inline-block;
+        background: linear-gradient(135deg, #c5a059 0%, #8b7a4c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .detail-info p {
+        font-size: 17px;
+        line-height: 1.7; 
+        color: #4a3f2e; 
+        margin: 8px 0;
+    }
+
+    .detail-features {
+        list-style: none; padding: 0; margin: 10px 0;
+        display: flex; flex-wrap: wrap; gap: 10px;
+    }
+
+    .detail-features li {
+        background-color: #fff3d1; padding: 6px 16px;
+        border-radius: 20px; font-size: 15px;
+        color: #5a4a30; border: 1px solid #e3c779;
+    }
+
+    .detail-price {
+        font-family: 'Georgia','Times New Roman','宋体',serif;
+        font-size: 24px; font-weight: 700; color: #1f1a10;
+        background-color: #fceeb8; display: inline-block;
+        padding: 10px 20px; border-radius: 30px;
+        border: 2px solid #e3c779; margin-top: 15px;
+    }
+
+    /* 备注小字 */
+    .note {
+        font-family: 'Lato', 'Georgia', serif;
+        font-size: 15px;
+        color: #8c8c8c;
+        font-style: italic;
+        margin-top: 12px;
+        line-height: 1.5;
+        border-left: 3px solid #e3c779;
+        padding-left: 12px;
+    }
+
+    @media (max-width: 768px) {
+        .detail-card {
+            flex-direction: column;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .detail-image { min-height: 200px; }
+        .carousel { height: 200px; }
+        .carousel-track img { width: 200px; }
+    }
+
+    /* 动画关键帧 */
+    @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+    <img src="7109c4827d5f9e9361d861811ddb225c.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="repair.html">Repair</a></li>
+        <li><a href="roomstatus.html">Roomstatus</a></li>
+        <li><a href="Cleaning.html">Cleaning</a></li>
+        <li><a href="comment.html">Comment</a></li>
+        <li><a href="supply.html">Supply</a></li>
+        <li><a href="checkout.html">Check-out</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='rooms.html'">Back to Home</button>
+</nav>
+
+<div class="carousel">
+    <div class="carousel-track">
+        <img src="https://img.zx123.cn/Resources/zx123cn/uploadfile/2021/0312/4f4c6fbf700b320699487d7f816ce347.jpg" alt="Single Room">
+        <img src="https://pic1.shejiben.com/case/2019/10/23/20191023104336-e30a44af.jpeg" alt="Double Room">
+        <img src="https://pic.nximg.cn/file/20230922/4901771_154545603102_2.jpg" alt="Quad Room">
+        <img src="https://img95.699pic.com/photo/60026/4379.jpg_wh860.jpg" alt="Business Room">
+        <img src="https://img.zx123.cn/Resources/zx123cn/uploadfile/2021/0312/4f4c6fbf700b320699487d7f816ce347.jpg" alt="Single Room">
+        <img src="https://pic1.shejiben.com/case/2019/10/23/20191023104336-e30a44af.jpeg" alt="Double Room">
+        <img src="https://pic.nximg.cn/file/20230922/4901771_154545603102_2.jpg" alt="Quad Room">
+        <img src="https://img95.699pic.com/photo/60026/4379.jpg_wh860.jpg" alt="Business Room">
+    </div>
+</div>
+
+<div>
+    <div class="title">Here to Choose</div>
+    <div class="button">
+        <button class="room" onclick="location.href='Single_rooms.html'">
+            <dl>
+                <dt class="text">Single Room</dt>
+                <dd>A Single Bed,1.5m | free WIFI | Private Bathroom</dd>
+            </dl>
+            <div class="price">￥298/night</div>
+        </button>
+        <button class="room" onclick="location.href='Double_rooms.html'">
+            <dl>
+                <dt class="text">Double Room</dt>
+                <dd>A King Bed,1.8m | Basic Equipments | View Window | Breakfast</dd>
+            </dl>
+            <div class="price">￥498/night</div>
+        </button>
+        <button class="room" onclick="location.href='Quad_rooms.html'">
+            <dl>
+                <dt class="text">Quad Room</dt>
+                <dd>A King Bed+2 Single Beds | Basic Equipments | Breakfast | Sofa</dd>
+            </dl>
+            <div class="price">￥698/night</div>
+        </button>
+        <button class="room" onclick="location.href='Business_rooms.html'">
+            <dl>
+                <dt class="text">Business Room</dt>
+                <dd>A King Bed | Basic Equipments | Private Bathroom | Work Area | Mini Bar</dd>
+            </dl>
+            <div class="price">￥888/night</div>
+        </button>
+    </div>
+</div>
+
+<!-- 区域装饰标题 -->
+<div class="section-header">
+    <span>✦ General Introduction ✦</span>
+</div>
+
+<!-- 卡片区域，左右交错，带备注 -->
+<div class="detail-cards">
+    <div class="detail-card left-image" onclick="location.href='Single_rooms.html'">
+        <div class="detail-image" style="background-image: url('https://img.zx123.cn/Resources/zx123cn/uploadfile/2021/0312/4f4c6fbf700b320699487d7f816ce347.jpg');"></div>
+        <div class="detail-info">
+            <h3>Single Room</h3>
+            <p>Thoughtfully designed for the solo traveler seeking both comfort and value. Our Single Room features a plush 1.5m bed dressed in premium cotton linens, a dedicated work desk, complimentary high‑speed Wi‑Fi, and a modern en‑suite bathroom with a rainfall shower. Large windows fill the space with natural light and offer calming garden views. Ideal for business trips or quiet getaways, every detail has been curated to ensure a restful and productive stay.</p>
+            <ul class="detail-features">
+                <li>1.5m Bed</li>
+                <li>Free Wi‑Fi</li>
+                <li>En‑suite Bathroom</li>
+                <li>Work Desk</li>
+                <li>Garden View</li>
+                <li>Daily Housekeeping</li>
+            </ul>
+            <p class="note">✦  Perfect for solo travelers · Quiet floor · 24h room service</p>
+            <div class="detail-price">￥298/night</div>
+        </div>
+    </div>
+
+    <div class="detail-card right-image" onclick="location.href='Double_rooms.html'">
+        <div class="detail-image" style="background-image: url('https://pic1.shejiben.com/case/2019/10/23/20191023104336-e30a44af.jpeg');"></div>
+        <div class="detail-info">
+            <h3>Double Room</h3>
+            <p>An inviting retreat for couples or small families. The Double Room features a grand 1.8m king‑sized bed with a pillow menu, a cozy sitting area by a panoramic window, and a sleek bathroom with a deep soaking tub. Start your day with a complimentary à la carte breakfast served in our garden lounge, and unwind in the evening with a selection from the minibar. Thoughtful touches like a Nespresso machine, blackout curtains, and evening turndown service make every moment special.</p>
+            <ul class="detail-features">
+                <li>1.8m King Bed</li>
+                <li>Breakfast Included</li>
+                <li>Panoramic Window</li>
+                <li>Minibar</li>
+                <li>Soaking Tub</li>
+                <li>Turndown Service</li>
+            </ul>
+            <p class="note">✦  Romantic getaway · Pillow menu · Late check-out available</p>
+            <div class="detail-price">￥498/night</div>
+        </div>
+    </div>
+
+    <div class="detail-card left-image" onclick="location.href='Quad_romms.html'">
+        <div class="detail-image" style="background-image: url('https://pic.nximg.cn/file/20230922/4901771_154545603102_2.jpg');"></div>
+        <div class="detail-info">
+            <h3>Quad Room</h3>
+            <p>Perfect for families or a group of friends, the Quad Room offers flexible sleeping arrangements with a luxurious king bed and two full‑sized single beds, all fitted with hypoallergenic bedding. The open‑plan layout includes a large sofa lounge, a dedicated dining area, and two bathrooms to avoid morning queues. Enjoy a complimentary breakfast for up to four guests, children's welcome amenities, and extra storage for luggage. The room is located on a quiet floor, ensuring a peaceful night for everyone.</p>
+            <ul class="detail-features">
+                <li>King + 2 Singles</li>
+                <li>Sofa Lounge</li>
+                <li>Breakfast ×4</li>
+                <li>Two Bathrooms</li>
+                <li>Extra Storage</li>
+                <li>Kids' Welcome Kit</li>
+            </ul>
+            <p class="note">✦  Family-friendly · Two bathrooms · Children's amenities included</p>
+            <div class="detail-price">￥698/night</div>
+        </div>
+    </div>
+
+    <div class="detail-card right-image" onclick="location.href='Business_rooms.html'">
+        <div class="detail-image" style="background-image: url('https://img95.699pic.com/photo/60026/4379.jpg_wh860.jpg');"></div>
+        <div class="detail-info">
+            <h3>Business Room</h3>
+            <p>Designed for the modern professional, the Business Room combines productivity and relaxation in a sleek, contemporary setting. The spacious king‑sized bed with a memory‑foam topper guarantees deep rest, while the ergonomic workstation, multi‑device charging hub, and priority high‑speed Wi‑Fi keep you connected. Unwind with premium spirits from the minibar or request an express laundry service. Additional perks include a Nespresso machine, daily international newspaper, and access to the exclusive business lounge where complimentary refreshments are served throughout the day.</p>
+            <ul class="detail-features">
+                <li>King Bed</li>
+                <li>Ergonomic Work Station</li>
+                <li>Minibar</li>
+                <li>Express Laundry</li>
+                <li>Business Lounge Access</li>
+                <li>Priority Wi‑Fi</li>
+            </ul>
+            <p class="note">✦  Executive lounge access · Express laundry · Daily newspaper</p>
+            <div class="detail-price">￥888/night</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.detail-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // 首屏卡片提前显示
+    const firstCard = document.querySelector('.detail-card');
+    if (firstCard) firstCard.classList.add('visible');
+</script>
+</body>
+</html>

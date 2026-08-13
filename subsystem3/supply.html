@@ -1,0 +1,502 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+/* ========== 全局与导航 ========== */
+body {
+    background-color: #fdf8f0;
+    margin: 0;
+    padding-top: 80px;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    opacity: 0.95;
+}
+
+.nav-logo { height: 40px; cursor: pointer; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+    color: #2c2c2c; text-decoration: none;
+    font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 400;
+    letter-spacing: 3px; text-transform: uppercase;
+    transition: color 0.3s ease; position: relative; padding-bottom: 6px;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: #C9A84C;
+    transition: width 0.4s ease;
+}
+.nav-links a:hover { color: #C9A84C; }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-book-btn {
+    padding: 12px 30px; border: 1px solid #C9A84C;
+    background: transparent; color: #C9A84C;
+    font-family: 'Lato', sans-serif; font-size: 12px;
+    letter-spacing: 3px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s ease;
+}
+.nav-book-btn:hover { background: #C9A84C; color: #FFFFFF; }
+
+/* ========== Hero 顶部背景区 ========== */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background: url('https://jg-app.obs.cn-north-4.myhuaweicloud.com/prod/upload/2/jpg/B707DB2C71A3B77630CA874BD667C18C.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -80px;
+    margin-bottom: 40px;
+}
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 40%,
+        rgba(253,248,240,0.7) 80%,
+        rgba(253,248,240,1) 100%
+    );
+    z-index: 1;
+}
+.hero-text {
+    position: relative;
+    z-index: 2;
+    font-size: 56px;
+    font-weight: 700;
+    color: #1f1a10;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* ========== 主内容区（板块式分层） ========== */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.section-card {
+    background-color: #ffffff;
+    border: 2px solid #e8dcc8;
+    border-radius: 24px;
+    padding: 30px 32px;
+    margin-bottom: 30px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+/* 原有标题样式 */
+.title {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f1a10;
+    margin-left: 0;
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f3d779;
+    display: inline-block;
+}
+
+.smalltitle {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 25px; font-weight: 700;
+    color: #1f1a10; margin-bottom: 7px;
+}
+
+.smalltitle2 {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 25px; font-weight: 700;
+    color: #1f1a10; margin-bottom: 7px;
+}
+
+.ctnt {
+    font-size: 20px; margin: 8px 0 8px 20px; line-height: 1.6; color: #3a3224;
+}
+
+/* 修改后的备注样式：灰色小字，顶部有分隔线 */
+.ps {
+    color: #7a7a7a;
+    font-size: 16px;
+    margin: 12px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed #d6c8a8;
+    font-style: italic;
+}
+
+/* 订货板块背景更淡 */
+.page3 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px; margin-bottom: 5px;
+    min-height: auto; height: auto;
+    border-radius: 16px;
+    border: 2px solid #e8dcc8;
+    padding: 20px 15px;
+    background-color: #fef9ed;      /* 改淡 */
+    width: 100%; max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* 其余部件样式保持不变 */
+.part {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 18px; font-weight: 600; color: #1f1a10;
+    background-color: #ffffff;
+    display: flex; align-items: center;
+    padding: 12px 16px; border-radius: 20px;
+    border: 2px solid #e3c779;
+    margin: 6px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+.part:hover {
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    transform: translateY(-1px); border-color: #d4b35c;
+}
+.part label {
+    display: flex; align-items: center; gap: 12px; width: 100%; cursor: pointer;
+}
+.part input[type="checkbox"] {
+    margin: 0; transform: scale(1.3); accent-color: #c5a059; cursor: pointer;
+}
+.part input[type="number"] {
+    width: 55px; padding: 4px 6px; border: 2px solid #e3c779;
+    border-radius: 8px; font-size: 16px; text-align: center;
+    background: #fdf8f0; transition: border-color 0.2s;
+}
+.part input[type="number"]:focus {
+    border-color: #c5a059; outline: none;
+    box-shadow: 0 0 0 3px rgba(227, 199, 121, 0.2);
+}
+.part span {
+    margin-left: auto; font-size: 16px; color: #5a4a30;
+    display: flex; align-items: center; gap: 6px;
+}
+
+.total-line {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 10px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #1f1a10;
+}
+#total {
+    display: inline-block;
+    background-color: #fceeb8;
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 2px solid #e3c779;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.btn {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 20px; font-weight: 700;
+    color: #1f1a10; background-color: #fceeb8;
+    display: inline-block; padding: 10px 28px;
+    border-radius: 30px; border: 2px solid #e3c779;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    cursor: pointer; transition: all 0.25s ease;
+    margin-top: 10px;
+}
+.btn:hover {
+    background-color: #fbe298;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+/* 支付弹窗保持不变 */
+.payment-modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(20, 15, 8, 0.7); z-index: 3000;
+    align-items: center; justify-content: center; backdrop-filter: blur(2px);
+}
+.payment-container {
+    background-color: #fffbf0; border-radius: 24px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2); border: 2px solid #e3c779;
+    padding: 20px 24px; width: 90%; max-width: 400px;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+}
+.summary-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 12px; border-bottom: 2px solid #f3d99b; margin-bottom: 20px;
+}
+.summary-title { font-size: 22px; font-weight: 700; color: #1f1a10; }
+.summary-close {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; font-size: 20px; font-weight: bold;
+    background-color: #fcebb3; border: 2px solid #e3c779;
+    border-radius: 16px; cursor: pointer; color: #1f1a10; transition: all 0.2s;
+}
+.summary-close:hover { background-color: #f5d87a; transform: rotate(90deg); }
+.pay-methods { display: flex; justify-content: center; gap: 12px; padding: 10px 0; }
+.pay-method-btn {
+    background-color: #fceeb8; border: 2px solid #e3c779;
+    border-radius: 20px; padding: 10px 24px;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 16px; font-weight: 600; color: #1f1a10;
+    cursor: pointer; transition: all 0.2s;
+}
+.pay-method-btn:hover { background-color: #fbe298; transform: translateY(-2px); }
+
+.qr-modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(20, 15, 8, 0.7); z-index: 3001;
+    align-items: center; justify-content: center; backdrop-filter: blur(2px);
+}
+.qr-container {
+    background-color: #fffbf0; border-radius: 24px;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.2); border: 2px solid #e3c779;
+    text-align: center; padding: 30px; position: relative;
+    max-width: 360px; width: 90%;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+}
+.qr-back {
+    position: absolute; top: 15px; left: 20px;
+    background: none; border: none; font-size: 22px;
+    cursor: pointer; color: #1f1a10; transition: color 0.2s;
+}
+.qr-back:hover { color: #c5a059; }
+.qr-container img {
+    width: 180px; height: 180px; margin: 20px auto; display: block;
+    border: 1px solid #e8dcc8; border-radius: 10px;
+}
+.qr-title { font-size: 20px; font-weight: 700; color: #1f1a10; margin-top: 10px; }
+.qr-confirm {
+    margin-top: 15px; padding: 10px 30px;
+    background-color: #7cdf78; color: white;
+    border: 2px solid #38ab62; border-radius: 30px;
+    font-weight: 700; cursor: pointer; transition: 0.2s;
+}
+.qr-confirm:hover { background-color: #6bc96b; }
+
+@media (max-width: 768px) {
+    .hero-text { font-size: 36px; }
+    .section-card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+    <img src="7109c4827d5f9e9361d861811ddb225c.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href=" ">Home</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="repair.html">Repair</a></li>
+        <li><a href="roomstatus.html">Roomstatus</a></li>
+        <li><a href="Cleaning.html">Cleaning</a></li>
+        <li><a href="comment.html">Comment</a></li>
+        <li><a href="supply.html">Supply</a></li>
+        <li><a href="checkout.html">Check-out</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='rooms.html'">Back to Home</button>
+</nav>
+
+<!-- Hero 顶部 -->
+<div class="hero-section">
+    <div class="hero-text">Item Restock Service</div>
+</div>
+
+<div class="main-content">
+    <!-- 介绍板块 -->
+    <div class="section-card">
+        <div class="title">Item Restock Service</div>
+        <dl>
+            <dt class="smalltitle">Welcome Banner</dt>
+            <dd>
+                <p class="ctnt">
+                    We provide timely and standardized item replenishment for hotel guest rooms. Our dedicated team carefully inspects every room and refills essential toiletries and daily supplies to maintain a complete and comfortable experience. 
+                    From fresh towels and premium toiletries to bottled water and disposable slippers, we ensure every guest finds everything they need.
+                </p>
+                <p class="ps">
+                    ※ Ensure every room is fully equipped for guests. Our restocking process follows strict hygiene and quality standards.
+                </p>
+            </dd>
+        </dl>
+    </div>
+
+    <!-- 订货板块 -->
+    <div class="section-card">
+        <dl class="page3">
+            <dt class="smalltitle2">Items:</dt>
+            <dd>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="5">Toothbrush & Toothpaste|¥5
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>
+                    </label>
+                </div>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="8">Shampoo & Body Wash|¥8
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>
+                    </label>
+                </div>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="10">Clean Towels|¥10
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>
+                    </label>
+                </div>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="3">Toilet Paper|¥3
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>
+                    </label>
+                </div>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="3">Bottled Water|¥3
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>
+                    </label>
+                </div>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="6">Disposable Slippers|¥6
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>
+                    </label>
+                </div>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="5">Hand Soap|¥5
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>
+                    </label>
+                </div>
+                <div class="part">
+                    <label>
+                        <input type="checkbox" name="item" class="box" data-price="4">Tissue Box|¥4
+                        <span>quality:
+                            <input type="number" min="0" value="0">
+                        </span>       
+                    </label>
+                </div>   
+            </dd>
+        </dl>
+        <div class="total-line">Total Price: <span id="total">0</span> ¥</div>
+        <button class="btn" id="payBtn">payment</button>
+    </div>
+</div>
+
+<!-- 支付弹窗 -->
+<div class="payment-modal" id="payment-modal">
+    <div class="payment-container">
+        <div class="summary-header">
+            <span class="summary-title">Select Payment Method</span>
+            <button class="summary-close" id="payment-close">×</button>
+        </div>
+        <div class="pay-methods">
+            <button class="pay-method-btn" data-pay="wechat">WeChat Pay</button>
+            <button class="pay-method-btn" data-pay="alipay">Alipay</button>
+            <button class="pay-method-btn" data-pay="card">Credit Card</button>
+        </div>
+    </div>
+</div>
+<div class="qr-modal" id="qr-modal">
+    <div class="qr-container">
+        <button class="qr-back" id="qr-back">←</button>
+        <div class="qr-title">Scan to Pay</div>
+        <img src="c323ac43e33590e3a87930f1abf989e9.jpg" alt="QR Code">
+        <p style="color:#666;">Please scan with your app</p>
+        <button class="qr-confirm" id="qr-confirm">Payment Completed</button>
+    </div>
+</div>
+
+<script>
+    const boxes = document.querySelectorAll("input[name='item']");
+    const tl = document.getElementById('total');
+    const parts = document.querySelectorAll('.part');
+
+    parts.forEach(function(a){
+        a.querySelector("input[name='item']").addEventListener('change', totalprice);
+        a.querySelector(`input[type='number']`).addEventListener('input', totalprice);
+    });
+
+    function totalprice(){
+        let total = 0;
+        boxes.forEach(function(a){
+            if(a.checked){
+                const price = parseFloat(a.dataset.price);
+                const number = parseInt(a.closest('.part').querySelector(`input[type='number']`).value);
+                total += price * number;
+            }
+        });
+        tl.innerText = total;
+    }
+
+    const payBtn = document.getElementById('payBtn');
+    const paymentModal = document.getElementById('payment-modal');
+    const paymentClose = document.getElementById('payment-close');
+    const payMethodBtns = document.querySelectorAll('.pay-method-btn');
+    const qrModal = document.getElementById('qr-modal');
+    const qrBack = document.getElementById('qr-back');
+    const qrConfirm = document.getElementById('qr-confirm');
+
+    payBtn.addEventListener('click', function() {
+        if (tl.innerText === '0' || tl.innerText === '') {
+            alert('Please select at least one item and quantity.');
+            return;
+        }
+        paymentModal.style.display = 'flex';
+    });
+
+    paymentClose.addEventListener('click', function() {
+        paymentModal.style.display = 'none';
+    });
+
+    payMethodBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            paymentModal.style.display = 'none';
+            qrModal.style.display = 'flex';
+        });
+    });
+
+    qrBack.addEventListener('click', function() {
+        qrModal.style.display = 'none';
+        paymentModal.style.display = 'flex';
+    });
+
+    qrConfirm.addEventListener('click', function() {
+        alert('Payment successful! Your order for item restock has been confirmed. Thank you!');
+        location.href='rooms.html';
+    });
+</script>
+</body>
+</html>

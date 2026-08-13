@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions | Finance | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <link rel="stylesheet" href="css/finance.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <img src="../images/logo.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="../importantPages/index.html">Home</a></li>
+        <li><a href="../subsystem2/main.html">Finance</a></li>
+        <li><a href="../pages/About.html">About</a></li>
+        <li><a href="../pages/Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='../importantPages/subsystems.html'">Subsystems</button>
+</nav>
+
+<main class="finance-page">
+    <div class="page-hero">
+        <div class="page-tag">Financial Records</div>
+        <h1 class="page-heading">Transactions</h1>
+        <div class="page-divider"></div>
+        <p class="page-desc">Browse and manage all hotel financial transactions</p>
+    </div>
+
+    <!-- 筛选栏 -->
+    <div class="filter-bar">
+        <input type="text" placeholder="Search by guest name or transaction ID...">
+        <select>
+            <option>All Categories</option>
+            <option>Room</option>
+            <option>Dining</option>
+            <option>Entertainment</option>
+            <option>Spa</option>
+            <option>Other</option>
+        </select>
+        <select>
+            <option>All Status</option>
+            <option>Paid</option>
+            <option>Pending</option>
+            <option>Cancelled</option>
+        </select>
+        <input type="date">
+    </div>
+
+    <!-- 交易表格 -->
+    <div class="table-section" style="padding: 0; overflow: hidden;">
+        <div style="overflow-x: auto; padding: 0;">
+            <table class="finance-table" style="margin: 0;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Guest</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#0247</td>
+                        <td>Li Wei</td>
+                        <td>2026-06-11</td>
+                        <td>Room</td>
+                        <td>Suite 301 — 2 nights</td>
+                        <td>¥1,280</td>
+                        <td><span class="status-badge paid">Paid</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#0246</td>
+                        <td>Zhang Min</td>
+                        <td>2026-06-11</td>
+                        <td>Dining</td>
+                        <td>Ossiano — Tasting Menu ×2</td>
+                        <td>¥680</td>
+                        <td><span class="status-badge paid">Paid</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#0245</td>
+                        <td>Wang Fang</td>
+                        <td>2026-06-10</td>
+                        <td>Room</td>
+                        <td>Deluxe 205 — 1 night</td>
+                        <td>¥960</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#0244</td>
+                        <td>Chen Jie</td>
+                        <td>2026-06-10</td>
+                        <td>Spa</td>
+                        <td>Hot Stone Massage — 90min</td>
+                        <td>¥420</td>
+                        <td><span class="status-badge paid">Paid</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#0243</td>
+                        <td>Liu Yang</td>
+                        <td>2026-06-09</td>
+                        <td>Entertainment</td>
+                        <td>KTV Deluxe Room — 3hr</td>
+                        <td>¥350</td>
+                        <td><span class="status-badge cancelled">Cancelled</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#0242</td>
+                        <td>Huang Li</td>
+                        <td>2026-06-09</td>
+                        <td>Room</td>
+                        <td>Standard 108 — 1 night</td>
+                        <td>¥480</td>
+                        <td><span class="status-badge paid">Paid</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#0241</td>
+                        <td>Zhao Yu</td>
+                        <td>2026-06-09</td>
+                        <td>Dining</td>
+                        <td>Forest Restaurant — Dinner ×4</td>
+                        <td>¥1,120</td>
+                        <td><span class="status-badge paid">Paid</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#0240</td>
+                        <td>Sun Qian</td>
+                        <td>2026-06-08</td>
+                        <td>Room</td>
+                        <td>Presidential Suite — 3 nights</td>
+                        <td>¥5,880</td>
+                        <td><span class="status-badge paid">Paid</span></td>
+                        <td><a href="#" class="table-link">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 分页 -->
+    <div class="pagination">
+        <button class="page-btn" disabled>&laquo; Prev</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn">Next &raquo;</button>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-info">
+            <h3>Mid-Mountain Hotel</h3>
+            <p>© 2026 All rights reserved</p>
+        </div>
+        <div class="footer-contact">
+            <p>Email: finance@midmountain.com</p>
+            <p>Phone: +86 123 4567 8900</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

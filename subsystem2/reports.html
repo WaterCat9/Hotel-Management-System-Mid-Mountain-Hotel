@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | Finance | Mid-Mountain Hotel</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <link rel="stylesheet" href="css/finance.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <img src="../images/logo.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="../importantPages/index.html">Home</a></li>
+        <li><a href="../subsystem2/main.html">Finance</a></li>
+        <li><a href="../pages/About.html">About</a></li>
+        <li><a href="../pages/Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='../importantPages/subsystems.html'">Subsystems</button>
+</nav>
+
+<main class="finance-page">
+    <div class="page-hero">
+        <div class="page-tag">Insights & Analysis</div>
+        <h1 class="page-heading">Financial Reports</h1>
+        <div class="page-divider"></div>
+        <p class="page-desc">Generate and review financial reports for better decision-making</p>
+    </div>
+
+    <!-- 报表卡片 -->
+    <div class="finance-cards">
+        <div class="finance-card">
+            <div class="card-icon">📊</div>
+            <h3>Monthly Summary</h3>
+            <p>Comprehensive revenue, expense, and profit breakdown for the current month</p>
+            <span class="card-arrow">Generate &rarr;</span>
+        </div>
+        <div class="finance-card">
+            <div class="card-icon">📋</div>
+            <h3>Quarterly Report</h3>
+            <p>Three-month financial trends with category analysis and growth metrics</p>
+            <span class="card-arrow">Generate &rarr;</span>
+        </div>
+        <div class="finance-card">
+            <div class="card-icon">📑</div>
+            <h3>Annual Report</h3>
+            <p>Year-over-year comparison, seasonal trends, and long-term performance insights</p>
+            <span class="card-arrow">Generate &rarr;</span>
+        </div>
+    </div>
+
+    <!-- 报表历史表格 -->
+    <div class="table-section">
+        <div class="table-header">
+            <h2>Report History</h2>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="finance-table">
+                <thead>
+                    <tr>
+                        <th>Report Name</th>
+                        <th>Period</th>
+                        <th>Type</th>
+                        <th>Generated</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>May 2026 Monthly Report</strong></td>
+                        <td>May 1 – May 31, 2026</td>
+                        <td>Monthly</td>
+                        <td>2026-06-01</td>
+                        <td><span class="status-badge paid">Ready</span></td>
+                        <td><a href="#" class="table-link">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Q2 2026 Quarterly Report</strong></td>
+                        <td>Apr 1 – Jun 30, 2026</td>
+                        <td>Quarterly</td>
+                        <td>—</td>
+                        <td><span class="status-badge pending">In Progress</span></td>
+                        <td><a href="#" class="table-link">—</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>April 2026 Monthly Report</strong></td>
+                        <td>Apr 1 – Apr 30, 2026</td>
+                        <td>Monthly</td>
+                        <td>2026-05-02</td>
+                        <td><span class="status-badge paid">Ready</span></td>
+                        <td><a href="#" class="table-link">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>March 2026 Monthly Report</strong></td>
+                        <td>Mar 1 – Mar 31, 2026</td>
+                        <td>Monthly</td>
+                        <td>2026-04-01</td>
+                        <td><span class="status-badge paid">Ready</span></td>
+                        <td><a href="#" class="table-link">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Q1 2026 Quarterly Report</strong></td>
+                        <td>Jan 1 – Mar 31, 2026</td>
+                        <td>Quarterly</td>
+                        <td>2026-04-03</td>
+                        <td><span class="status-badge paid">Ready</span></td>
+                        <td><a href="#" class="table-link">Download</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 数据条 -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">📄</div>
+            <h3>Total Reports</h3>
+            <p class="stat-value">12</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⬇️</div>
+            <h3>Downloads</h3>
+            <p class="stat-value">38</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <h3>Next Auto-Report</h3>
+            <p class="stat-value" style="font-size: 20px; letter-spacing: 1px;">Jul 1</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <h3>Avg. Generation Time</h3>
+            <p class="stat-value" style="font-size: 20px; letter-spacing: 1px;">2.4 min</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-info">
+            <h3>Mid-Mountain Hotel</h3>
+            <p>© 2026 All rights reserved</p>
+        </div>
+        <div class="footer-contact">
+            <p>Email: finance@midmountain.com</p>
+            <p>Phone: +86 123 4567 8900</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

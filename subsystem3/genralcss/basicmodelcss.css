@@ -1,0 +1,116 @@
+.title{
+       position: relative;
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       font-size: 32px;
+       font-weight: 700;
+       color: #1f1a10;
+       margin-left: 20px;
+       margin-bottom: 8px;
+       padding-bottom: 12px;
+       border-bottom:2px solid #f3d779;
+       display: inline-block;
+}
+.smalltitle{
+       position: relative;
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       margin-left: 20px;
+       margin-bottom: 7px;
+       font-size: 25px;
+       font-weight: 700;
+       color: #1f1a10;
+}
+.smalltitle2{
+       position: relative;
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       margin-left: 20px;
+       margin-bottom: 7px;
+       font-size: 25px;
+       font-weight: 700;
+       color: #1f1a10;
+}
+.page{
+       height: 760px;
+       border-radius: 16px;
+       border: 2px solid #e8dcc8;
+       padding: 20px 15px;
+       position: relative;
+       top: 8%;
+}
+.page2{
+       position: relative;
+       height: 520px;
+       border-radius: 16px;
+       border: 2px solid #e8dcc8;
+       padding: 20px 15px;
+}
+.page3{
+       display: flex;
+       margin-top: 5px;
+       margin-bottom: 5px;
+       height: 28px;
+       border-radius: 16px;
+       border: 2px solid #e8dcc8;
+       padding: 15px;
+       justify-content: left;
+       background-color: #f9f1d0;
+       width: 700px;
+       overflow: hidden;
+       align-items: center;
+}
+.ps{
+       color: rgba(243, 85, 85, 0.71);
+       position: relative;
+       left: 5%;
+       margin: 4px 0;
+       font-size: 20px;
+}
+.ctnt{
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       font-size: 20px;
+       margin: 8px;
+       margin-left: 30px;
+
+}
+.chocie{
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       font-size: 20px;
+       font-weight: 700;
+       color: #1f1a10;
+       background-color: #fceeb8;
+       display: inline-block;
+       padding: 8px 16px;
+       border-radius: 30px;
+       border:2px solid #e3c779;
+       margin-top: 6px;
+       margin-bottom: 10px;
+       box-shadow: inset 0 1 3px rgba(255,255,255,0.8);
+}
+.btn{
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       font-size: 20px;
+       font-weight: 700;
+       color: #1f1a10;
+       background-color: white;
+       display: inline-block;
+       padding:10px;
+       border-radius: 30px;
+       border:2px solid #e3c779;
+       margin-left: 10px;
+       margin-top: 10px;
+       box-shadow: inset 0 1px 3px rgba(255,255,255,0.8);
+}
+.room{
+       display: inline-block;
+       margin: 3px;
+       width: 30px;
+       height: 15px;
+       background-color: rgb(255, 255, 255);
+       border: 2px solid #e3c779;
+       border-radius: 16px;
+       text-align: left;
+       padding: 24px 20px 20px;
+       box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+       color: #1f1a10;
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       font-size: 18px;
+}

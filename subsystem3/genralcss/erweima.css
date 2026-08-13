@@ -1,0 +1,54 @@
+.qrmodel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    z-index: 3000;
+    text-align: center;
+    font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+    max-width: 350px;
+    width: 90%;
+}
+.qrmodel img {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    display: block;
+    border: 1px solid #e8dcc8;
+    border-radius: 10px;
+}
+.qrmodel .qr-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f1a10;
+    margin-bottom: 10px;
+}
+.qrmodel .qr-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+}
+.qrmodel .qr-confirm {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 30px;
+    background-color: #fceeb8;
+    border: 2px solid #e3c779;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.qrmodel .qr-confirm:hover {
+    background-color: #fbe298;
+}

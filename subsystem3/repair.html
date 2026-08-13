@@ -1,0 +1,801 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+/* ========== 全局与导航 ========== */
+body {
+    background-color: #fdf8f0;
+    margin: 0;
+    padding-top: 80px;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    opacity: 0.95;
+}
+
+.nav-logo { height: 40px; cursor: pointer; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+    color: #2c2c2c; text-decoration: none;
+    font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 400;
+    letter-spacing: 3px; text-transform: uppercase;
+    transition: color 0.3s ease; position: relative; padding-bottom: 6px;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: #C9A84C;
+    transition: width 0.4s ease;
+}
+.nav-links a:hover { color: #C9A84C; }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-book-btn {
+    padding: 12px 30px; border: 1px solid #C9A84C;
+    background: transparent; color: #C9A84C;
+    font-family: 'Lato', sans-serif; font-size: 12px;
+    letter-spacing: 3px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s ease;
+}
+.nav-book-btn:hover { background: #C9A84C; color: #FFFFFF; }
+
+/* ========== Hero 顶部背景区 ========== */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background: url('https://img.shetu66.com/2023/11/17/1700184276530648.png?x-oss-process=image/resize,h_800/watermark,image_d2F0ZXJtYXJrL2JhY2tncm91cDAxLnBuZw==,g_se,x_0,y_10/watermark,text_6K6-5Zu-572RIOe8luWPtzo2MTI5Mzk5Njg5') center/cover no-repeat; /* 维修主题图片 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -80px;            /* 抵消 body 的 padding-top，让图片紧贴导航下方 */
+    margin-bottom: 40px;
+}
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 40%,
+        rgba(253,248,240,0.7) 80%,
+        rgba(253,248,240,1) 100%
+    );
+    z-index: 1;
+}
+.hero-text {
+    position: relative;
+    z-index: 2;
+    font-size: 52px;
+    font-weight: 700;
+    color: #1f1a10;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* ========== 主内容区（板块式分层） ========== */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 20px 20px;
+}
+
+.section-card {
+    background-color: #ffffff;
+    border: 2px solid #e8dcc8;
+    border-radius: 24px;
+    padding: 30px 32px;
+    margin-bottom: 30px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+/* 标题系统 */
+.title {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f1a10;
+    margin-left: 0;
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f3d779;
+    display: inline-block;
+}
+
+.smalltitle {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 25px; font-weight: 700;
+    color: #1f1a10; margin-left: 0; margin-bottom: 7px;
+}
+
+.smalltitle2 {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 25px; font-weight: 700;
+    color: #1f1a10; margin-left: 0; margin-bottom: 7px;
+}
+
+.ctnt {
+    font-size: 18px;
+    margin: 8px 0 8px 20px;
+    line-height: 1.7;
+    color: #3a3224;
+}
+
+/* 备注文字（原红色改为灰色小字） */
+.ps {
+    color: #7a7a7a;
+    font-size: 16px;
+    margin: 12px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed #d6c8a8;
+    font-style: italic;
+    text-align: center;          
+}
+/* 服务项目条（page3）改淡 */
+.page3 {
+    display: flex;
+    margin-top: 5px; margin-bottom: 5px;
+    min-height: 40px;
+    border-radius: 16px;
+    border: 2px solid #e8dcc8;
+    padding: 12px 15px;
+    justify-content: flex-start;
+    background-color: #fef9ed;      /* 改淡 */
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.chocie {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f1a10;
+    background-color: #fef9ed;      /* 与板块背景统一淡色 */
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 30px;
+    border: 2px solid #e3c779;
+    margin-top: 6px; margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    line-height: 1.8;
+    box-sizing: border-box;
+}
+.chocie label {
+    display: flex; align-items: center; gap: 8px;
+    margin: 4px 0;
+    font-size: 17px;
+    cursor: pointer;
+}
+.chocie input[type="checkbox"] {
+    margin: 0;
+    transform: scale(1.2);
+    accent-color: #c5a059;
+}
+
+.btn {
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 20px; font-weight: 700;
+    color: #1f1a10; background-color: #fff0c4;
+    display: inline-block; padding: 10px 20px;
+    border-radius: 30px; border: 2px solid #e3c779;
+    margin-left: 10px; margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    cursor: pointer; transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+.btn:hover {
+    background-color: #fbe298;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.btnmdl {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+    gap: 80px; margin: 15px auto 20px;
+    padding: 10px 20px; background-color: transparent;
+    width: fit-content; max-width: 100%;
+    box-sizing: border-box;
+}
+
+.sure {
+    display: flex;
+    background-color: rgb(138, 223, 138);
+    color: #1f1a10;
+    height: 50px; width: 200px;
+    border-radius: 12px; justify-content: center; align-items: center;
+    position: relative;
+    border: 2px solid #058e25;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 18px; cursor: pointer; transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+.sure:hover:not(:disabled) { background-color: #78d178; }
+.sure:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.update {
+    display: flex;
+    background-color: rgb(223, 212, 138);
+    color: #1f1a10;
+    height: 50px; width: 200px;
+    border-radius: 12px; justify-content: center; align-items: center;
+    position: relative;
+    border: 2px solid #daab40;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 18px; cursor: pointer; transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+.update:hover { background-color: #d8c680; }
+
+/* 房间选择弹窗（保持原样） */
+.sltmodel {
+    display: none;
+    max-width: 950px;
+    padding: 24px 28px;
+    background-color: #fffbf0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    position: fixed;
+    border: 3px solid #e3c779;
+    color: #1f1a10;
+    z-index: 1001;
+    box-sizing: border-box;
+}
+.room {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    margin: 6px;
+    min-width: 65px; height: 40px;
+    background-color: #ffffff;
+    border: 2px solid #e3c779;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    color: #1f1a10;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 18px;
+    cursor: pointer; transition: all 0.2s ease;
+    user-select: none; box-sizing: border-box;
+}
+.room:hover:not(.selected):not(.preventrepeat) { background-color: #fff0c4; }
+.selected {
+    background-color: rgb(126, 203, 126);
+    border-color: #67b867;
+    transform: scale(1.05);
+}
+.preventrepeat {
+    background-color: rgb(216, 216, 216);
+    cursor: not-allowed;
+    color: #666;
+}
+.close {
+    display: none;
+    position: absolute; top: 12px; right: 16px;
+    font-size: 16px; cursor: pointer;
+    height: 26px; width: 26px;
+    border-radius: 50%;
+    background-color: rgb(252, 235, 179);
+    font-weight: bold; justify-content: center; align-items: center;
+    border: 3px solid #e3c779;
+    color: #1f1a10;
+    box-sizing: border-box;
+}
+
+/* 维修状态弹窗 */
+.summary-model {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(20, 15, 8, 0.7);
+    z-index: 2001;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(2px);
+}
+.anothermdl {
+    width: 600px; height: 700px;
+    background-color: #fffbf0;
+    border-radius: 16px;
+    border: 2px solid #daab40;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+.sure2 {
+    display: none;
+    background-color: rgb(138, 223, 138);
+    color: #1f1a10;
+    height: 40px; width: 100px;
+    border-radius: 12px;
+    justify-content: center; align-items: center;
+    border: 2px solid #058e25;
+    font-family: 'Georgia','Times New Roman','宋体',serif;
+    font-size: 18px;
+    cursor: pointer; transition: all 0.2s ease;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.sure2:hover {
+    background-color: #78d178;
+    transform: translateX(-50%) scale(1.05);
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+    <img src="7109c4827d5f9e9361d861811ddb225c.png" alt="Mid-Mountain" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href=" ">Home</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="repair.html">Repair</a></li>
+        <li><a href="roomstatus.html">Roomstatus</a></li>
+        <li><a href="Cleaning.html">Cleaning</a></li>
+        <li><a href="comment.html">Comment</a></li>
+        <li><a href="supply.html">Supply</a></li>
+        <li><a href="checkout.html">Check-out</a></li>
+    </ul>
+    <button class="nav-book-btn" onclick="window.location.href='rooms.html'">Back to Home</button>
+</nav>
+
+<!-- Hero 顶部背景区 -->
+<div class="hero-section">
+    <div class="hero-text">Equipment Repair Service</div>
+</div>
+
+<!-- 主内容区（板块分层） -->
+<div class="main-content">
+    <!-- 介绍板块 -->
+    <div class="section-card">
+        <div class="title">Professional Hotel Equipment Maintenance & Repair Service</div>
+        <p class="ps" style="border-top:none; padding-top:0; margin-top:0; font-style:normal; color:#7a7a7a; font-size:16px;">ALL SERVICE FREE HERE</p>
+        <dl>
+            <dt class="smalltitle">Service Introduction</dt>
+            <dd class="ctnt">We provide professional maintenance and repair services for hotel room equipment, including air conditioners, TVs, refrigerators, water heaters, lighting systems, and other electrical facilities. Our experienced technicians conduct timely inspections, quick repairs, and regular maintenance to ensure all equipment operates safely and stably, minimizing downtime and maintaining smooth hotel operations.</dd>
+        </dl>
+    </div>
+
+    <!-- 服务项目板块（包含选择房间和复选框） -->
+    <div class="section-card">
+        <div class="page3">
+            <span class="smalltitle2">Service Items</span>
+            <button class="btn" id="btn">&emsp;Select the room for repair&emsp;</button>
+            <span class="btn" id="slt" style="background:#fff; min-width:80px; text-align:center;"></span>
+        </div>
+        <div class="chocie" style="margin-top:15px;">
+            <label><input type="checkbox" name="service">Air Conditioning Repair & Maintenance</label><br>
+            <label><input type="checkbox" name="service">TV & Electrical Equipment Repair</label><br>
+            <label><input type="checkbox" name="service">Refrigerator & Water Heater Maintenance</label><br>
+            <label><input type="checkbox" name="service">Lighting System Inspection & Repair</label><br>
+            <label><input type="checkbox" name="service">Plumbing & Pipeline Maintenance</label><br>
+            <label><input type="checkbox" name="service">Regular Equipment Check & Preventive Maintenance</label>
+        </div>
+    </div>
+
+    <!-- 服务优势板块 -->
+    <div class="section-card">
+        <dt class="smalltitle">Service Advantages</dt>
+        <dd class="ctnt">
+            <ul type="circle">
+               <li>Fast on‑site response</li>
+               <li>Professional and skilled technicians</li>
+               <li>Safe and standardized repair process</li>
+               <li>Transparent pricing and quality assurance</li>
+               <li>Long‑term maintenance support</li>
+            </ul>
+        </dd>
+    </div>
+
+    <!-- 操作按钮板块 -->
+    <div class="section-card" style="text-align:center;">
+        <div class="btnmdl">
+            <button class="sure" id="sr">Confirm</button>
+            <button class="update" id="update">Update repair status</button>
+        </div>
+    </div>
+</div>
+
+<!-- 房间选择弹窗 -->
+<div class="sltmodel" id="model">
+   <div>ROOM LIST:</div>
+   <span><button class="close" id="cls">×</button></span> 
+   <br>
+   <div id="roomlist"></div>
+</div>
+
+<!-- 维修状态更新弹窗 -->
+<div class="summary-model" id="anmdl">
+    <div class="anothermdl">
+        <div class="smalltitle">Repairing:</div><span><button class="close" id="cls2">×</button></span>
+        <div id="repairrmlist"></div>
+        <button class="sure2" id="yes2">Yes</button>
+    </div>
+</div>
+<script>
+    const org_Singlerooms=[
+        {id:101,status:0},
+        {id:102,status:0},
+        {id:103,status:0},
+        {id:104,status:0},
+        {id:105,status:1},
+        {id:106,status:0},
+        {id:107,status:1},
+        {id:108,status:0},
+        {id:109,status:0},
+        {id:201,status:0},
+        {id:202,status:0},
+        {id:203,status:0},
+        {id:204,status:0},
+        {id:205,status:1},
+    ]
+
+    const org_Doublerooms=[
+        {id:110,status:0},
+        {id:111,status:0},
+        {id:112,status:0},
+        {id:113,status:0},
+        {id:114,status:0},
+        {id:115,status:1},
+        {id:206,status:0},
+        {id:207,status:0},
+        {id:208,status:0},
+        {id:209,status:0},
+        {id:210,status:1},
+        {id:301,status:0},
+        {id:302,status:0},
+        {id:303,status:0},
+        {id:304,status:0},
+        {id:305,status:0},
+    ]
+
+        const org_Quadrooms=[
+        {id:211,status:0},
+        {id:212,status:0},
+        {id:213,status:0},
+        {id:214,status:0},
+        {id:215,status:1},
+        {id:306,status:0},
+        {id:307,status:0},
+        {id:308,status:0},
+        {id:309,status:0},
+        {id:310,status:0},
+        {id:311,status:1},
+        {id:312,status:0},
+        {id:313,status:0},
+        {id:314,status:0},
+        {id:315,status:0},
+    ]
+    const org_Businessrooms=[
+        {id:401,status:0},
+        {id:402,status:0},
+        {id:403,status:0},
+        {id:404,status:0},
+        {id:405,status:1},
+        {id:406,status:0},
+        {id:407,status:0},
+        {id:408,status:0},
+    ]
+
+    let singlerooms=loadsinglerooms()
+    let doublerooms=loaddoublerooms()
+    let quadrooms=loadquadrooms()
+    let businessrooms=loadbusinessrooms()
+    
+    const btn=document.getElementById('btn');
+    const mdl=document.getElementById('model');
+    const roomlist=document.getElementById('roomlist');
+    const slt=document.getElementById('slt');
+    const cls=document.getElementById('cls');
+    const cls2=document.getElementById('cls2');
+    const sr=document.getElementById('sr');
+    const service=document.querySelectorAll('input[name="service"]');
+    const up=document.getElementById('update');
+    const rproomlist=document.getElementById('repairrmlist');
+    const repairmodel=document.getElementById('anmdl');
+    const yes=document.getElementById('yes2')
+
+    sr.disabled=true;
+
+    btn.onclick=function(){    
+       const xybtn=btn.getBoundingClientRect();
+       mdl.style.display='flex';
+       mdl.style.top=(xybtn.bottom-4)+'px';
+       mdl.style.left=(xybtn.right+8)+'px';
+       cls.style.display='flex';
+       renderroom();
+    }
+
+    cls.onclick=function(){
+       mdl.style.display='none';
+    }
+    cls2.onclick=function(){
+       repairmodel.style.display='none';
+    }
+
+    sr.onclick=function(){
+    const rmid=parseInt(slt.innerText);
+    const rm1=singlerooms.find(function(a){return a.id===rmid});
+    const rm2=doublerooms.find(function(a){return a.id===rmid});
+    const rm3=quadrooms.find(function(a){return a.id===rmid});
+    const rm4=businessrooms.find(function(a){return a.id===rmid});
+    if (rm1){
+       rm1.status=2;
+       localStorage.setItem('singlerooms',JSON.stringify(singlerooms));
+       mdl.style.display='none';
+       alert(`Room ${rmid} has been successfully reported for repair...`);
+       slt.innerText='';
+    }
+    if (rm2){
+       rm2.status=2;
+       localStorage.setItem('doublerooms',JSON.stringify(doublerooms));
+       mdl.style.display='none';
+       alert(`Room ${rmid} has been successfully reported for repair...`);
+       slt.innerText='';
+    }
+       if (rm3){
+       rm3.status=2;
+       localStorage.setItem('quadrooms',JSON.stringify(quadrooms));
+       mdl.style.display='none';
+       alert(`Room ${rmid} has been successfully reported for repair...`);
+       slt.innerText='';
+    }
+       if (rm4){
+       rm4.status=2;
+       localStorage.setItem('businessrooms',JSON.stringify(businessrooms));
+       mdl.style.display='none';
+       alert(`Room ${rmid} has been successfully reported for repair...`);
+       slt.innerText='';
+    }    
+    }
+
+    up.onclick=function(){
+       repairmodel.style.display='flex';
+       cls2.style.display='flex';
+       rendenrepairroom();
+    }
+    
+    
+    function check(){
+       const roomselected=slt.innerText.trim()!=='';
+       const serviceslt=Array.from(service).some(function(a){return a.checked});
+       sr.disabled=!(roomselected && serviceslt);
+    }
+
+
+    function renderroom(){
+       roomlist.innerHTML=('');
+       singlerooms.forEach(
+              function(room){
+                     const div=document.createElement('div');
+                     div.innerText=room.id;
+                     div.classList.add('room');
+                     if(room.status==2){
+                            div.classList.add('preventrepeat')
+                     }
+                     roomlist.appendChild(div);
+
+                     
+                     div.onclick=function(){
+                            const selectedrooms=Array.from(document.querySelectorAll('.selected'));
+                            selectedrooms.forEach(function(a){a.classList.remove('selected')});
+                            div.classList.add('selected')
+                            slt.innerText=room.id;
+                            slt.classList.add('smalltitle2');
+                            check();
+                     }
+
+              }
+       )
+       doublerooms.forEach(
+              function(room){
+                     const div=document.createElement('div');
+                     div.innerText=room.id;
+                     div.classList.add('room');
+                     if(room.status==2){
+                            div.classList.add('preventrepeat')
+                     }                     
+                     roomlist.appendChild(div);
+
+                     
+                     div.onclick=function(){
+                            const selectedrooms=Array.from(document.querySelectorAll('.selected'));
+                            selectedrooms.forEach(function(a){a.classList.remove('selected')});
+                            div.classList.add('selected')
+                            slt.innerText=room.id;
+                            slt.classList.add('smalltitle2');
+                            check();
+                     }
+
+              }
+       )
+       quadrooms.forEach(
+              function(room){
+                     const div=document.createElement('div');
+                     div.innerText=room.id;
+                     div.classList.add('room');
+                     if(room.status==2){
+                            div.classList.add('preventrepeat')
+                     }                     
+                     roomlist.appendChild(div);
+
+                     
+                     div.onclick=function(){
+                            const selectedrooms=Array.from(document.querySelectorAll('.selected'));
+                            selectedrooms.forEach(function(a){a.classList.remove('selected')});
+                            div.classList.add('selected')
+                            slt.innerText=room.id;
+                            slt.classList.add('smalltitle2');
+                            check();
+                     }
+
+              }
+       )
+       businessrooms.forEach(
+              function(room){
+                     const div=document.createElement('div');
+                     div.innerText=room.id;
+                     div.classList.add('room');
+                     if(room.status==2){
+                            div.classList.add('preventrepeat')
+                     }                     
+                     roomlist.appendChild(div);
+
+                     
+                     div.onclick=function(){
+                            const selectedrooms=Array.from(document.querySelectorAll('.selected'));
+                            selectedrooms.forEach(function(a){a.classList.remove('selected')});
+                            div.classList.add('selected')
+                            slt.innerText=room.id;
+                            slt.classList.add('smalltitle2');
+                            check();
+                     }
+
+              }
+       )
+    }
+
+    function rendenrepairroom(){
+       rproomlist.innerText='';
+       singlerooms.forEach(function(a){
+              if (a.status===2){
+                     const div=document.createElement('div');
+                     div.classList.add('room');
+                     div.innerText=a.id;
+                     rproomlist.appendChild(div);
+                     div.onclick=function(){
+                            div.classList.add('selected');
+                            yes.style.display='flex';
+                            yes.onclick=function(){
+                                   a.status=0
+                                   localStorage.setItem('singlerooms',JSON.stringify(singlerooms));
+                                   alert("Repair status has been removed");
+                                   yes.style.display='none';
+                                   repairmodel.style.display='none';
+                            }
+                     } 
+              }
+       })
+       doublerooms.forEach(function(a){
+              if (a.status===2){
+                     const div=document.createElement('div');
+                     div.classList.add('room');
+                     div.innerText=a.id;
+                     rproomlist.appendChild(div);
+                     div.onclick=function(){
+                            div.classList.add('selected');
+                            yes.style.display='flex';
+                            yes.onclick=function(){
+                                   a.status=0
+                                   localStorage.setItem('doublerooms',JSON.stringify(doublerooms));
+                                   alert("Repair status has been removed");
+                                   yes.style.display='none';
+                                   repairmodel.style.display='none';
+                            }
+                     } 
+              }
+       })
+       quadrooms.forEach(function(a){
+              if (a.status===2){
+                     const div=document.createElement('div');
+                     div.classList.add('room');
+                     div.innerText=a.id;
+                     rproomlist.appendChild(div);
+                     div.onclick=function(){
+                            div.classList.add('selected');
+                            yes.style.display='flex';
+                            yes.onclick=function(){
+                                   a.status=0
+                                   localStorage.setItem('quadrooms',JSON.stringify(quadrooms));
+                                   alert("Repair status has been removed");
+                                   yes.style.display='none';
+                                   repairmodel.style.display='none';
+                            }
+                     } 
+              }
+       })
+       businessrooms.forEach(function(a){
+              if (a.status===2){
+                     const div=document.createElement('div');
+                     div.classList.add('room');
+                     div.innerText=a.id;
+                     rproomlist.appendChild(div);
+                     div.onclick=function(){
+                            div.classList.add('selected');
+                            yes.style.display='flex';
+                            yes.onclick=function(){
+                                   a.status=0
+                                   localStorage.setItem('businessrooms',JSON.stringify(businessrooms));
+                                   alert("Repair status has been removed");
+                                   yes.style.display='none';
+                                   repairmodel.style.display='none';
+                            }
+                     } 
+              }
+       })
+    }
+
+
+    function loadsinglerooms(){
+       const stored=localStorage.getItem('singlerooms');
+       if (stored) {
+            return JSON.parse(stored);
+       }
+       else{
+            localStorage.setItem('singlerooms',JSON.stringify(org_Singlerooms));
+            return org_Singlerooms;
+       }
+    }
+    function loaddoublerooms(){
+       const stored=localStorage.getItem('doublerooms');
+       if (stored) {
+            return JSON.parse(stored);
+       }
+       else{
+            localStorage.setItem('doublerooms',JSON.stringify(org_Doublerooms));
+            return org_Doublerooms;
+       }
+    }
+    function loadquadrooms(){
+       const stored=localStorage.getItem('quadrooms');
+       if (stored) {
+            return JSON.parse(stored);
+       }
+       else{
+            localStorage.setItem('quadrooms',JSON.stringify(org_Quadrooms));
+            return org_Quadrooms;
+       }
+    }
+    function loadbusinessrooms(){
+       const stored=localStorage.getItem('businessrooms');
+       if (stored) {
+            return JSON.parse(stored);
+       }
+       else{
+            localStorage.setItem('businessrooms',JSON.stringify(org_Businessrooms));
+            return org_Businessrooms;
+       }
+    }
+
+
+    service.forEach(function(a){a.addEventListener('change',check)})
+</script>    

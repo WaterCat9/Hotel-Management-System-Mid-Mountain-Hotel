@@ -1,0 +1,35 @@
+.sure{
+       display: flex;
+       background-color: rgb(138, 223, 138);
+       color: white;
+       height: 50px;
+       width: 200px;
+       border-radius: 12px;
+       justify-content: center;
+       align-items: center;
+       position: relative;
+       border: 2px solid #058e25;
+       font-family: 'Georgia','Times New Roman','宋体',serif;
+       font-size: 18px;
+}
+.sure:disabled{
+       opacity: 0.5;
+       cursor: not-allowed;
+}
+.close{
+       display: none;
+       position: absolute;
+       top: 12px;
+       right: 16px;
+       font-size: 15px;
+       cursor: pointer;
+       height: 16px;
+       width: 6px;
+       border-radius: 3px;
+       background-color: rgb(252, 235, 179);
+       font: bold;
+       border: 2px solid #caae63;
+       justify-content: center;
+       align-items: center;
+       border: 3px solid #e3c779;
+}
